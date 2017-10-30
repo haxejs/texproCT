@@ -11,6 +11,19 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { Pro } from '@ionic/pro';
+import { ErrorHandler } from '@angular/core';
+
+const IonicPro = Pro.init('6ca6a8de', {
+  appVersion: "0.0.1"
+});
+
+export class MonitoringErrorHandler implements ErrorHandler {
+  handleError(err: any): void {
+    IonicPro.monitoring.handleNewError(err);
+  }
+}
+
 @NgModule({
   declarations: [
     MyApp,
@@ -34,7 +47,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: MonitoringErrorHandler}
   ]
 })
 export class AppModule {}
