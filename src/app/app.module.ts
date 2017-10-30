@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
@@ -11,17 +11,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { Pro } from '@ionic/pro';
-
-const IonicPro = Pro.init('6ca6a8de', {
-  appVersion: "0.0.1"
-});
-
-export class MonitoringErrorHandler implements ErrorHandler {
-  handleError(err: any): void {
-    IonicPro.monitoring.handleNewError(err);
-  }
-}
 
 @NgModule({
   declarations: [
@@ -46,7 +35,7 @@ export class MonitoringErrorHandler implements ErrorHandler {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: MonitoringErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
