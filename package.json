@@ -1,8 +1,6 @@
 {
     "name": "dtrapp",
     "version": "0.0.1",
-    "author": "Ionic Framework",
-    "homepage": "http://ionicframework.com/",
     "private": true,
     "scripts": {
         "clean": "ionic-app-scripts clean",
@@ -26,11 +24,10 @@
         "@ionic/pro": "^1.0.11",
         "@ionic/storage": "2.0.1",
         "cordova-android": "^6.2.3",
-        "cordova-ios": "^4.4.0",
-        "cordova-plugin-add-swift-support": "^1.7.0",
         "cordova-plugin-device": "^1.1.4",
         "cordova-plugin-ionic": "^2.0.2",
         "cordova-plugin-ionic-webview": "^1.1.16",
+        "cordova-plugin-push-baidu": "^5.6.1",
         "cordova-plugin-splashscreen": "^4.0.3",
         "cordova-plugin-whitelist": "^1.3.1",
         "ionic-angular": "3.7.1",
@@ -42,9 +39,12 @@
     },
     "devDependencies": {
         "@ionic/app-scripts": "3.0.1",
-        "typescript": "2.3.4"
+        "gulp": "^3.9.1",
+        "thunks": "^4.9.0",
+        "typescript": "2.3.4",
+        "xml2js": "^0.4.19"
     },
-    "description": "An Ionic project",
+    "description": "A DTRCloud App",
     "cordova": {
         "plugins": {
             "cordova-plugin-device": {},
@@ -52,17 +52,10 @@
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
-            "cordova-plugin-ionic": {
-                "APP_ID": "6ca6a8de",
-                "CHANNEL_NAME": "Master",
-                "UPDATE_METHOD": "background",
-                "UPDATE_API": "https://api.ionicjs.com",
-                "MAX_STORE": "2"
-            }
+            "cordova-plugin-push-baidu": {}
         },
         "platforms": [
-            "android",
-            "ios"
+            "android"
         ]
     }
 }
