@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="net.sontech.dtrcloud.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="net.sontech.dtrcloud.app" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>DTRApp</name>
     <description>A DTRCloud App</description>
     <content src="index.html" />
@@ -77,6 +77,13 @@
     </platform>
     <engine name="android" spec="^6.2.3" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
+    <plugin name="cordova-plugin-ionic" spec="^2.0.2">
+        <variable name="APP_ID" value="a86b2fd2" />
+        <variable name="CHANNEL_NAME" value="Master" />
+        <variable name="UPDATE_METHOD" value="background" />
+        <variable name="UPDATE_API" value="https://api.ionicjs.com" />
+        <variable name="MAX_STORE" value="2" />
+    </plugin>
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-push-baidu" spec="^5.6.1" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
