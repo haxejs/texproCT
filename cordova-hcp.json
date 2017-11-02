@@ -1,0 +1,7 @@
+{
+  "ios_identifier": "id123456789",
+  "android_identifier": "net.sontech.dtrcloud.app",
+  "update": "start",
+  "min_native_interface": 1,
+  "content_url": "http://192.168.2.104:8100"
+}
