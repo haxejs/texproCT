@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Platform, ToastController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { TabsPage } from '../pages/tabs/tabs';
 
 declare var require: any;
@@ -33,7 +32,7 @@ export class MyApp {
       }
 
       showToast({version:myPackage.version});
-
+      
       if (window.baiduPush) {
         window.baiduPush.onMessage(result => showToast({msg:result}), error => showToast(error));
 

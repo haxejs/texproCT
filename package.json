@@ -24,9 +24,9 @@
         "@ionic/pro": "^1.0.11",
         "@ionic/storage": "2.0.1",
         "cordova-android": "^6.2.3",
-        "cordova-plugin-add-swift-support": "^1.7.0",
+        "cordova-hot-code-push-local-dev-addon": "^0.4.2",
+        "cordova-hot-code-push-plugin": "^1.5.3",
         "cordova-plugin-device": "^1.1.4",
-        "cordova-plugin-ionic": "^2.0.2",
         "cordova-plugin-ionic-webview": "^1.1.16",
         "cordova-plugin-push-baidu": "^5.6.1",
         "cordova-plugin-splashscreen": "^4.0.3",
@@ -40,6 +40,7 @@
     },
     "devDependencies": {
         "@ionic/app-scripts": "3.0.1",
+        "cordova-hot-code-push-cli": "^1.1.1",
         "gulp": "^3.9.1",
         "thunks": "^4.9.0",
         "typescript": "2.3.4",
@@ -54,13 +55,8 @@
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
             "cordova-plugin-push-baidu": {},
-            "cordova-plugin-ionic": {
-                "APP_ID": "a86b2fd2",
-                "CHANNEL_NAME": "Master",
-                "UPDATE_METHOD": "background",
-                "UPDATE_API": "https://api.ionicjs.com",
-                "MAX_STORE": "2"
-            }
+            "cordova-hot-code-push-plugin": {},
+            "cordova-hot-code-push-local-dev-addon": {}
         },
         "platforms": [
             "android"
