@@ -42,6 +42,7 @@
         "@ionic/app-scripts": "3.0.1",
         "cordova-hot-code-push-cli": "^1.1.1",
         "gulp": "^3.9.1",
+        "gulp-watch": "^4.3.11",
         "thunks": "^4.9.0",
         "typescript": "2.3.4",
         "xml2js": "^0.4.19"
