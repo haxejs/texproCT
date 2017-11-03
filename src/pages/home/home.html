@@ -1,17 +1,53 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <carousel></carousel>
+  <div>
+    <ion-item-divider>
+      <button ion-button outline item-end>Request Repair</button>
+      My devices
+    </ion-item-divider>
+    <div class="row">
+      <div padding class="item">
+        <img src="http://img4.3lian.com/img2005/10/08/03.png"/>
+        <div class="truncate">Running</div>
+        <div>7</div>
+      </div>
+      <div padding class="item">
+        <img src="http://img4.3lian.com/img2005/10/08/03.png"/>
+        <div class="truncate">Warning</div>
+        <div>7</div>
+      </div>
+      <div padding class="item">
+        <img src="http://img4.3lian.com/img2005/10/08/03.png"/>
+        <div class="truncate">Stopped</div>
+        <div>7</div>
+      </div>
+      <div padding class="item">
+        <img src="http://img4.3lian.com/img2005/10/08/03.png"/>
+        <div class="truncate">Disconnected</div>
+        <div>7</div>
+      </div>      
+    </div>
+  </div>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <div>
+    <ion-item-divider>
+      My outputs
+    </ion-item-divider>
+    <div class="row">
+      <div padding class="item">
+        <img src="http://img4.3lian.com/img2005/10/08/03.png"/>
+        <div class="truncate">Completed</div>
+        <div>7</div>
+      </div>
+      <div padding class="item">
+        <img src="http://img4.3lian.com/img2005/10/08/03.png"/>
+        <div class="truncate">Producing</div>
+        <div>7</div>
+      </div>      
+    </div>
+  </div>  
+    
 </ion-content>

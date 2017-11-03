@@ -1,3 +1,32 @@
 page-home {
+	.row {
+	  display: flex;
+	  display: -webkit-flex;
+	  flex-direction: row;
+	  -webkit-flex-direction: row;
+	  flex-wrap: wrap;	  
+	  -webkit-flex-wrap: wrap;
+	  align-items: flex-start;
+	  -webkit-align-items: flex-start;
+	  justify-content: flex-start;
+	  -webkit-justify-content: flex-start;
 
+	  .item {
+	  	width: 10rem;
+	  	text-align: center;
+	  	border:1px solid #a1a1a1;
+	  	border-radius:10px;
+	  	margin:0.5rem;
+
+	  	img {
+	  	  height:2rem;
+	  	}
+	  }
+	}
+	.truncate {
+	  width: 100%;
+	  white-space: nowrap;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	}
 }

@@ -7,6 +7,11 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { IntroPage } from '../pages/intro/intro';
+import { ProductsPage } from '../pages/products/products';
+import { ProductDetailPage } from '../pages/products/productDetail';
+
+import { CarouselComponent } from '../pages/home/carousel';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,11 +23,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    IntroPage,
+    ProductsPage,
+    ProductDetailPage,
+    TabsPage,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{
+      backButtonIcon: 'md-arrow-back',
+      backButtonText: ''
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -30,6 +42,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    IntroPage,
+    ProductsPage,
+    ProductDetailPage,
     TabsPage
   ],
   providers: [
