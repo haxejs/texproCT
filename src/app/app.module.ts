@@ -1,6 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { Http, HttpModule } from '@angular/http';
+
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
@@ -10,6 +12,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { IntroPage } from '../pages/intro/intro';
 import { ProductsPage } from '../pages/products/products';
 import { ProductDetailPage } from '../pages/products/productDetail';
+import { MachinesPage } from '../pages/machines/machines';
+import { MachineDetailPage } from '../pages/machines/machineDetail';
+import { BatchesPage } from '../pages/batches/batches';
+import { BatchDetailPage } from '../pages/batches/batchDetail';
 
 import { CarouselComponent } from '../pages/home/carousel';
 
@@ -26,11 +32,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IntroPage,
     ProductsPage,
     ProductDetailPage,
+    MachinesPage,
+    MachineDetailPage,
+    BatchesPage,
+    BatchDetailPage,
     TabsPage,
     CarouselComponent
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp,{
       backButtonIcon: 'md-arrow-back',
       backButtonText: ''
@@ -45,6 +56,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IntroPage,
     ProductsPage,
     ProductDetailPage,
+    MachinesPage,
+    MachineDetailPage,
+    BatchesPage,
+    BatchDetailPage,
     TabsPage
   ],
   providers: [

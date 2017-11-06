@@ -15,8 +15,8 @@ var api_key = 's7dXctRdiXVRtc8PF2PKWjUk';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  //rootPage:any = TabsPage;
-  rootPage:any = IntroPage;
+  rootPage:any = TabsPage;
+  //rootPage:any = IntroPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, toastCtrl: ToastController) {
     platform.ready().then(() => {

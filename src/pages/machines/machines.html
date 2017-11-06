@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ state }} Machines</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item detail-push (click)="showMachine()">
+      <div padding item-start>
+        <h1>1</h1>
+      </div>
+      <h2>Machine 1</h2>
+      <h3>Running, step 1</h3>
+      <p>User warning: manual operations</p>      
+    </ion-item>
+    <ion-item detail-push (click)="showMachine()">
+      <div padding item-start>
+        <h1>2</h1>
+      </div>
+      <h2>Machine 2</h2>
+      <h3>Running, step 1</h3>
+    </ion-item>
+  </ion-list>
+</ion-content>

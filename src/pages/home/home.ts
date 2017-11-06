@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { MachinesPage } from '../machines/machines';
+import { BatchesPage } from '../batches/batches';
 
 @Component({
   selector: 'page-home',
@@ -7,7 +9,7 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(private navCtrl: NavController) {
   }
 
   doRefresh(refresher) {
@@ -17,6 +19,14 @@ export class HomePage {
       console.log('Async operation has ended');
       refresher.complete();
     }, 2000);
+  }
+
+  showMachines() {
+    this.navCtrl.push(MachinesPage,{});
+  }
+
+  showBatches() {
+    this.navCtrl.push(BatchesPage,{});
   }
 
 }
