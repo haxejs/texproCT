@@ -9,7 +9,11 @@ import { ProductDetailPage } from '../products/productDetail';
     templateUrl: 'products.html'
 })
 export class ProductsPage {
-	constructor(public navCtrl: NavController) {}
+	private category: string;
+
+	constructor(public navCtrl: NavController) {
+		this.category = 'machine';
+	}
 
 	showProduct(){
 		this.navCtrl.push(ProductDetailPage,{name:'unknown'})

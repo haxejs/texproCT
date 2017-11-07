@@ -48,6 +48,16 @@ page-home {
 	  	  height:1rem;
 	  	}	  	
 	  }
+
+	  .itemWide {
+	  	@extend .item;
+	  	width: auto;
+	  	flex:1 0 auto;
+	  }
+
+	  .itemWide:last-child {
+	  	margin-right:0;
+	  }
 	}
 	.truncate {
 	  width: 100%;
