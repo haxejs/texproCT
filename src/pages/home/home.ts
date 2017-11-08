@@ -22,7 +22,7 @@ export class HomePage {
   }
 
   showMachines() {
-    this.navCtrl.push(MachinesPage,{});
+    this.navCtrl.push(MachinesPage,{state:"stopped",total:7});
   }
 
   showBatches() {

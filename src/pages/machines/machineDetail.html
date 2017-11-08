@@ -1,8 +1,102 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Machine Detail</ion-title>
+    <ion-title>1 - Machine 1</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card style="background-color:black;">
+  	<xchart style="height:100px;"></xchart>
+  </ion-card>
+
+  <ion-card ion-list>
+  	<ion-item-divider>
+      Machine info
+    </ion-item-divider>
+    <ion-item>
+        <ion-label>Machine Num.</ion-label>
+        <div item-end>1</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>Machine Name</ion-label>
+        <div item-end>S01</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>Batch Name</ion-label>
+        <div item-end>x123456</div>
+    </ion-item>
+  </ion-card>
+
+  <ion-card ion-list>
+  	<ion-item-divider>
+      Warning
+    </ion-item-divider>
+    <ion-card-content>
+      <h2>User warning</h2>
+      <p>Machine is running manually</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card ion-list>
+  	<ion-item-divider>
+      Machine state
+    </ion-item-divider>
+    <ion-item>
+        <ion-label>CallState</ion-label>
+        <div item-end>Connected</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>Machine Mode</ion-label>
+        <div item-end>DTR</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>Machine State</ion-label>
+        <div item-end>Running</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>Main Temp</ion-label>
+        <div item-end>60</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>DyeProgName</ion-label>
+        <div item-end>xxx</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>DyeProgNumber</ion-label>
+        <div item-end>1</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>DyeProgStep</ion-label>
+        <div item-end>3</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>{{ MachineIns1_Text }}</ion-label>
+        <div item-end>{{ MachineIns1_Value }}</div>
+    </ion-item>
+  </ion-card>
+
+  <ion-card ion-list>
+  	<ion-item-divider>
+      Parameters
+    </ion-item-divider>
+    <ion-item>
+        <ion-label>Loading</ion-label>
+        <div item-end>10</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>Water</ion-label>
+        <div item-end>S01</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>Steam</ion-label>
+        <div item-end>30</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>Power</ion-label>
+        <div item-end>153</div>
+    </ion-item>
+  </ion-card>
 </ion-content>

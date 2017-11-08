@@ -1,4 +1,24 @@
 page-home {
+    #machines {
+      background:url('../assets/imgs/bg_tech10.jpg');
+      background-size:cover;
+    }
+
+    #completedBatches {
+      background:url('../assets/imgs/bg_tech09.jpg');
+      background-size:cover;
+    }
+
+    #producingBatches {
+      background:url('../assets/imgs/bg_tech07.jpg');
+      background-size:cover;
+    }
+
+    .dividerEnhance {
+      opacity:0.8;
+      color:black;
+    }
+
 	.row {
 	  display: flex;
 	  display: -webkit-flex;
@@ -9,7 +29,7 @@ page-home {
 	  align-items: flex-start;
 	  -webkit-align-items: flex-start;
 	  justify-content: flex-start;
-	  -webkit-justify-content: flex-start;
+	  -webkit-justify-content: flex-start;	  
 
 	  .dangerTextColor {
 	  	 color:color($colors, danger);
@@ -17,9 +37,14 @@ page-home {
 	  .secondaryTextColor {
 	  	 color:color($colors, secondary);
 	  }
-	  .primaryBackgroundColor {
-	  	 background:color($colors, primary);
+	  .lightTextColor {
+	  	 color:color($colors, light);
+	  }
+	  .contrastBackgroundColor {
+	  	 background-color: rgba(0,0,0,0.3);
 	  	 color:white;
+	  	 width: 100%;
+	  	 font-weight: bold;	  	 
 	  }
 
 
@@ -32,6 +57,7 @@ page-home {
 	  	margin-right:16px;
 	  	padding-top:4px;
 	  	padding-bottom:4px;
+	  	background-color:rgba(255,255,255,0.8);
 
 	  	display: flex;
 		display: -webkit-flex;

@@ -24,7 +24,7 @@ $app-direction: ltr;
 
 $background-color: #eef6fc;
 $list-background-color: #fff;
-$toolbar-background: #4790f1;
+$toolbar-background: #4682B4; //SteelBlue 
 
 // Named Color Variables
 // --------------------------------------------------
@@ -35,11 +35,11 @@ $toolbar-background: #4790f1;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #4790f1,
+  primary:    #4682B4, //SteelBlue
+  secondary:  #20B2AA, //LightSeaGreen
   danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  light:      #C0C0C0, //silver
+  dark:       #708090  //SlateGrey 
 );
 
 

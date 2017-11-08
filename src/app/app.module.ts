@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Http, HttpModule } from '@angular/http';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { MyApp } from './app.component';
 
@@ -14,6 +15,7 @@ import { ProductsPage } from '../pages/products/products';
 import { ProductDetailPage } from '../pages/products/productDetail';
 import { MachinesPage } from '../pages/machines/machines';
 import { MachineDetailPage } from '../pages/machines/machineDetail';
+import { XChartComponent } from '../pages/machines/xchart';
 import { BatchesPage } from '../pages/batches/batches';
 import { BatchDetailPage } from '../pages/batches/batchDetail';
 
@@ -34,6 +36,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProductDetailPage,
     MachinesPage,
     MachineDetailPage,
+    XChartComponent,
     BatchesPage,
     BatchDetailPage,
     TabsPage,
@@ -42,6 +45,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     HttpModule,
+    ChartsModule,
     IonicModule.forRoot(MyApp,{
       backButtonIcon: 'md-arrow-back',
       backButtonText: ''
