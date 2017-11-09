@@ -17,7 +17,6 @@ import { MachinesPage } from '../pages/machines/machines';
 import { MachineDetailPage } from '../pages/machines/machineDetail';
 import { XChartComponent } from '../pages/machines/xchart';
 import { BatchesPage } from '../pages/batches/batches';
-import { BatchDetailPage } from '../pages/batches/batchDetail';
 
 import { CarouselComponent } from '../pages/home/carousel';
 
@@ -38,7 +37,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MachineDetailPage,
     XChartComponent,
     BatchesPage,
-    BatchDetailPage,
     TabsPage,
     CarouselComponent
   ],
@@ -63,7 +61,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MachinesPage,
     MachineDetailPage,
     BatchesPage,
-    BatchDetailPage,
     TabsPage
   ],
   providers: [

@@ -7,8 +7,12 @@ import { NavController, NavParams } from 'ionic-angular';
     templateUrl: 'machineDetail.html'
 })
 export class MachineDetailPage {
+	private MachineIns1_Text: string;
+	private MachineIns1_Value: string;
+
 	constructor(private navCtrl: NavController, private navParams: NavParams) {
-	  	console.dir(navParams);
+	  	this.MachineIns1_Text = 'Increase Temp';
+	  	this.MachineIns1_Value = '80';
 	}
 
 	doRefresh(refresher) {
