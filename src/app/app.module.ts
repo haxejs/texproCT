@@ -18,6 +18,9 @@ import { MachineDetailPage } from '../pages/machines/machineDetail';
 import { XChartComponent } from '../pages/machines/xchart';
 import { BatchesPage } from '../pages/batches/batches';
 
+import { RequestPage } from '../pages/modals/request';
+import { LoginPage } from '../pages/modals/login';
+
 import { CarouselComponent } from '../pages/home/carousel';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -38,6 +41,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     XChartComponent,
     BatchesPage,
     TabsPage,
+    LoginPage,
+    RequestPage,
     CarouselComponent
   ],
   imports: [
@@ -61,6 +66,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MachinesPage,
     MachineDetailPage,
     BatchesPage,
+    LoginPage,
+    RequestPage,
     TabsPage
   ],
   providers: [

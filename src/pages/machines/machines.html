@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Machines ({{state}}: {{total}})</ion-title>
+    <ion-title>Running Machines</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -12,22 +12,20 @@
     <ion-card>
       <ion-item detail-push (click)="showMachine()">
         <div padding item-start>        
-          <h1>1</h1>
+          <h1>01</h1>
         </div>
-        <h2>Machine 1</h2>
-        <h3>Running, step 1</h3>
-        <p>User warning: manual operations</p>
-        <ion-icon [name]="iconName" item-end></ion-icon>      
+        <h2>Machine 1 (0123456)</h2>
+        <h3>Running, 45°C, 001, 001, Increase temperature</h3>
+        <p>User warning: manual operations</p>      
       </ion-item>
     </ion-card>
     <ion-card>
       <ion-item detail-push (click)="showMachine()">
         <div padding item-start>
-          <h1>2</h1>
+          <h1>02</h1>
         </div>
-        <h2>Machine 2</h2>
-        <h3>Running, step 1</h3>
-        <ion-icon [name]="iconName" item-end></ion-icon>
+        <h2>Machine 2 (0123478)</h2>
+        <h3>Running, 80°C, 002, 001, Increase temperature</h3>
       </ion-item>
     </ion-card>
   </ion-list>

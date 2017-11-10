@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Request Repair</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card ion-list>
+    <ion-item>
+      <ion-label color="primary" stacked>Enter description</ion-label>
+      <ion-textarea></ion-textarea>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <button ion-button color="primary" full (click)="dismiss()">Send</button>
+      <button margin-top ion-button color="danger" full (click)="dismiss()">Cancel</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
