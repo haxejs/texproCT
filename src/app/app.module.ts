@@ -25,6 +25,9 @@ import { CarouselComponent } from '../pages/home/carousel';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SDKBrowserModule } from './shared/sdk/index';
+
+import { DTRService } from './dtr.service';
 
 
 @NgModule({
@@ -49,6 +52,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     BrowserModule,
     HttpModule,
     ChartsModule,
+    SDKBrowserModule.forRoot(),
     IonicModule.forRoot(MyApp,{
       backButtonIcon: 'md-arrow-back',
       backButtonText: ''
@@ -73,6 +77,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    DTRService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

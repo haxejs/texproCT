@@ -33,7 +33,7 @@
    </ion-list>  	  
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngIf="dtr.isAuthenticated()">
     <ion-list>
       <ion-item-divider>
         My info
@@ -41,27 +41,27 @@
       </ion-item-divider>
       <ion-item>
         <ion-label>Name</ion-label>
-        <ion-note item-end>kshi</ion-note>
+        <ion-note item-end>{{ dtr.getCachedCurrent().fullName }}</ion-note>
       </ion-item>
       <ion-item>
         <ion-label>Email</ion-label>
-        <ion-note item-end>demo@test.com</ion-note>
+        <ion-note item-end>{{ dtr.getCachedCurrent().email }}</ion-note>
       </ion-item>
       <ion-item>
         <ion-label>Mobile</ion-label>
-        <ion-note item-end>15360038836</ion-note>
+        <ion-note item-end>{{ dtr.getCachedCurrent().username }}</ion-note>
       </ion-item>
       <ion-item>
         <ion-label>Role</ion-label>
-        <ion-note item-end>admin</ion-note>
+        <ion-note item-end>{{ dtr.getCachedCurrent().roleName }}</ion-note>
       </ion-item>
     </ion-list>
   </ion-card>
 
   <ion-card>
     <ion-card-content>
-        <button ion-button full color="primary" (click)="login()"><ion-icon name="log-in"></ion-icon>Login</button>
-  	    <button ion-button full color="danger" (click)="logout()"><ion-icon name="log-out"></ion-icon>Logout</button>
+        <button ion-button full color="primary" (click)="login()" *ngIf="!dtr.isAuthenticated()"><ion-icon name="log-in"></ion-icon>Login</button>
+  	    <button ion-button full color="danger" (click)="logout()" *ngIf="dtr.isAuthenticated()"><ion-icon name="log-out"></ion-icon>Logout</button>
     </ion-card-content>  
   </ion-card>
 </ion-content>

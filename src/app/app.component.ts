@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { IntroPage } from '../pages/intro/intro';
+import { LoopBackConfig } from './shared/sdk';
 
 declare var window: any;
 var api_key = 's7dXctRdiXVRtc8PF2PKWjUk';
@@ -16,6 +17,9 @@ export class MyApp {
   //rootPage:any = IntroPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, toastCtrl: ToastController) {
+    LoopBackConfig.setBaseURL('http://192.168.2.104:3000');
+    LoopBackConfig.setApiVersion('api');
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

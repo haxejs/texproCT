@@ -5,20 +5,18 @@
 </ion-header>
 
 <ion-content>
-  <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
   <ion-list>
-    <ion-card>
-      <ion-item detail-push (click)="showMachine()">
+    <ion-card *ngFor="let machine of machines();">
+      <ion-item detail-push (click)="showMachine(machine.id)">
         <div padding item-start>        
-          <h1>01</h1>
+          <h1>{{machine.MachineNumber}}</h1>
         </div>
-        <h2>Machine 1 (0123456)</h2>
+        <h2>{{machine.MachineName}} ({{machine.BatchName}})</h2>
         <h3>Running, 45°C, 001, 001, Increase temperature</h3>
         <p>User warning: manual operations</p>      
       </ion-item>
     </ion-card>
+<!--     
     <ion-card>
       <ion-item detail-push (click)="showMachine()">
         <div padding item-start>
@@ -28,5 +26,6 @@
         <h3>Running, 80°C, 002, 001, Increase temperature</h3>
       </ion-item>
     </ion-card>
+-->
   </ion-list>
 </ion-content>

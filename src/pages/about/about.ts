@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, AlertController } from 'ionic-angular';
 import { LoginPage } from '../modals/login';
+import { DTRService } from '../../app/dtr.service';
 
 declare var require: any;
 var myPackage = require('../../../package.json');
@@ -15,7 +16,10 @@ export class AboutPage {
 
   private version:string;
 
-  constructor(private navCtrl: NavController, private modalCtrl: ModalController, private alertCtrl: AlertController) {
+  constructor(private navCtrl: NavController, 
+    private modalCtrl: ModalController, 
+    private alertCtrl: AlertController,
+    private dtr: DTRService) {
   	this.language = 'en';
   	this.version = myPackage.version;
   }
@@ -32,7 +36,7 @@ export class AboutPage {
         {
           text: 'Sure',
           handler: () => {
-            console.log('Sure clicked');
+            this.dtr.logout();
           }
         },
         {

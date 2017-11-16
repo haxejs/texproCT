@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { MachineDetailPage } from '../machines/machineDetail';
+import { DTRService } from '../../app/dtr.service';
+import { Machine } from '../../app/shared/sdk/models';
 
 const stateIconMap = {
 	'running':'pulse',
@@ -18,21 +20,17 @@ export class MachinesPage {
 	private total : number = 0;
 	private iconName : string;
 
-	constructor(public navCtrl: NavController, navParams: NavParams) {
+	constructor(public navCtrl: NavController, private dtr: DTRService, navParams: NavParams) {
 		this.state = navParams.data.state;
 		this.iconName = stateIconMap[navParams.data.state];
 	}
 
-	doRefresh(refresher) {
-	    console.log('Begin async operation', refresher);
-
-	    setTimeout(() => {
-	      console.log('Async operation has ended');
-	      refresher.complete();
-	    }, 2000);
+	public machines(){
+		//TODO:filter by state
+		return this.dtr.machines.filter(machine => {return machine.MachineNumber == 10});
 	}
 
-	showMachine(){
-		this.navCtrl.push(MachineDetailPage,{machineId:'m1'})
+	public showMachine(machineId){
+		this.navCtrl.push(MachineDetailPage,{machineId:machineId});
 	}
 }
