@@ -37,7 +37,7 @@ export class BatchesPage implements OnDestroy{
 	} 
 
 	private getLineChartLabels(){
-		return this.batches.map((batch)=>{return batch.BatchName});
+		return this.batches.map((batch)=>{return batch.MachineNumber + '_' + batch.BatchName});
 	} 
 
 	private update(){
@@ -50,7 +50,7 @@ export class BatchesPage implements OnDestroy{
 
 		//trick to update labels:https://github.com/valor-software/ng2-charts/issues/650
 		let __lineChartLabels = this.getLineChartLabels();
-		if (__lineChartLabels.length != this.lineChartLabels.length){
+		if (__lineChartLabels.toString() != this.lineChartLabels.toString()){
 			setTimeout(()=>{this.lineChartLabels = __lineChartLabels},0);
 		}
 		
@@ -58,8 +58,7 @@ export class BatchesPage implements OnDestroy{
 	}
 
 	private getBatches(){
-		//TODO: filter by state
-		return this.dtr.batches.filter(batch => {return batch.MachineNumber == 10});
+		return this.dtr.batches.filter(batch => {return batch.completed == this.state});
 	}
 
 	private getLoadingTotal(){
@@ -119,8 +118,10 @@ export class BatchesPage implements OnDestroy{
 	public lineChartType:string = 'horizontalBar';
 
 	private timeoutHandle;
+	private state:number = 0;
 
 	constructor(public navCtrl: NavController, private dtr: DTRService, private navParams: NavParams) {
+		this.state = navParams.data.state;		
 		this.update();
 	}
 

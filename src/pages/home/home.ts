@@ -14,7 +14,7 @@ import { Batch, Machine } from '../../app/shared/sdk/models';
 })
 export class HomePage {
   public machines:Array<Machine> = new Array<Machine>();
-  public batches:Array<Batch> = new Array<Machine>();
+  public batches:Array<Batch> = new Array<Batch>();
 
   constructor(private navCtrl: NavController, 
     private modalCtrl: ModalController, 
@@ -24,19 +24,19 @@ export class HomePage {
   }
 
   public runningMachines(){
-    return this.machines.filter(machine => {return machine.MachineNumber == 10});
+    return this.machines.filter(machine => {return machine.OnLine == 1 && machine.MachineState == '1'});
   }
 
   public warningMachines(){
-    return this.machines.filter(machine => {return machine.MachineNumber == 11});
+    return this.machines.filter(machine => {return machine.OnLine == 1 && machine.Main_Alarm > 0});
   }
 
   public stoppedMachines(){
-    return this.machines.filter(machine => {return machine.MachineNumber == 12});
+    return this.machines.filter(machine => {return machine.OnLine == 1 && machine.MachineState == '0'});
   }
 
-  public disconnectedMachines(){
-    return this.machines.filter(machine => {return machine.MachineNumber == 13});
+  public offlineMachines(){
+    return this.machines.filter(machine => {return machine.OnLine == 0});
   }
 
   public completedBatches(){
@@ -55,17 +55,17 @@ export class HomePage {
     return this.uncompletedBatches().reduce((sum,batch)=>{return sum + batch.Loading },0);
   }
 
-  public showMachines() {
+  public showMachines(state) {
     if (this.dtr.isAuthenticated()){
-      this.navCtrl.push(MachinesPage,{state:"stopped"});
+      this.navCtrl.push(MachinesPage,{state:state});
     } else {
       this.login();
     }    
   }
 
-  public showBatches() {
+  public showBatches(state) {
     if (this.dtr.isAuthenticated()){
-      this.navCtrl.push(BatchesPage,{state:"completed"});
+      this.navCtrl.push(BatchesPage,{state:state});
     } else {
       this.login();
     }    

@@ -7,25 +7,25 @@
     </ion-item-divider>
 
     <ion-card-content class="row">
-      <div padding-horizontal class="item secondaryTextColor" tappable (click)="showMachines()">
+      <div padding-horizontal class="item secondaryTextColor" tappable (click)="showMachines('running')">
         <ion-icon name="pulse"></ion-icon>
         <div class="truncate">Running</div>
         <div>{{ runningMachines().length }}</div>
       </div>
-      <div padding-horizontal class="item dangerTextColor" tappable (click)="showMachines()">
+      <div padding-horizontal class="item dangerTextColor" tappable (click)="showMachines('warning')">
         <ion-icon name="warning"></ion-icon>
         <div class="truncate">Warning</div>
         <div>{{ warningMachines().length }}</div>
       </div>
-      <div padding-horizontal class="item" tappable (click)="showMachines()">
+      <div padding-horizontal class="item" tappable (click)="showMachines('stopped')">
         <ion-icon name="square"></ion-icon>
         <div class="truncate">Stopped</div>
         <div>{{ stoppedMachines().length }}</div>
       </div>
-      <div padding-horizontal class="item lightTextColor" tappable (click)="showMachines()">
+      <div padding-horizontal class="item lightTextColor" tappable (click)="showMachines('offline')">
         <ion-icon name="switch"></ion-icon>
-        <div class="truncate">Disconnected</div>
-        <div>{{ disconnectedMachines().length }}</div>
+        <div class="truncate">Offline</div>
+        <div>{{ offlineMachines().length }}</div>
       </div>      
     </ion-card-content>
   </ion-card>
@@ -35,14 +35,14 @@
       Today's batch reports
     </ion-item-divider>
     <ion-card-content class="row">
-      <div id="completedBatches" padding-horizontal class="itemWide" tappable (click)="showBatches()">
+      <div id="completedBatches" padding-horizontal class="itemWide" tappable (click)="showBatches(1)">
         <div class="contrastBackgroundColor">
           <div class="truncate">Completed</div>
           <div>Batches: {{ completedBatches().length }}</div>
           <div>Loading: {{ completedLoading() }}</div>
         </div>        
       </div>
-      <div id="producingBatches" padding-horizontal class="itemWide" tappable (click)="showBatches()">
+      <div id="producingBatches" padding-horizontal class="itemWide" tappable (click)="showBatches(0)">
         <div class="contrastBackgroundColor">
           <div class="truncate">Producing</div>
           <div>Batches: {{ uncompletedBatches().length }}</div>
