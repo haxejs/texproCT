@@ -15,7 +15,6 @@ import { ProductsPage } from '../pages/products/products';
 import { ProductDetailPage } from '../pages/products/productDetail';
 import { MachinesPage } from '../pages/machines/machines';
 import { MachineDetailPage } from '../pages/machines/machineDetail';
-import { XChartComponent } from '../pages/machines/xchart';
 import { BatchesPage } from '../pages/batches/batches';
 
 import { RequestPage } from '../pages/modals/request';
@@ -41,7 +40,6 @@ import { DTRService } from './dtr.service';
     ProductDetailPage,
     MachinesPage,
     MachineDetailPage,
-    XChartComponent,
     BatchesPage,
     TabsPage,
     LoginPage,

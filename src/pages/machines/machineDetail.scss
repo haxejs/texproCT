@@ -1,0 +1,14 @@
+page-machineDetail{
+	#tempChart {
+		background-color:black;
+		position:relative;
+
+		ion-label{
+			position:absolute;
+			right:0;
+			bottom:0;
+			color:green;
+			font-weight:bold;
+		}
+	}
+}

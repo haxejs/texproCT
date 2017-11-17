@@ -1,25 +1,37 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{machine().MachineNumber}} - {{machine().MachineName}}</ion-title>
+    <ion-title>{{machine.MachineNumber}} - {{machine.MachineName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <ion-card id="tempChart">
+    <canvas *ngIf="lineChartData.length > 0" baseChart width="100%" height="40"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType">
+    </canvas>
+    <ion-label>Temperature: {{machine.MachineMainTemp}}</ion-label>
+  </ion-card>
+
   <ion-card ion-list>
   	<ion-item-divider>
       Machine info
     </ion-item-divider>
     <ion-item>
         <ion-label>Machine Num.</ion-label>
-        <div item-end>{{machine().MachineNumber}}</div>
+        <div item-end>{{machine.MachineNumber}}</div>
     </ion-item>
     <ion-item>
         <ion-label>Machine Name</ion-label>
-        <div item-end>{{machine().MachineName}}</div>
+        <div item-end>{{machine.MachineName}}</div>
     </ion-item>
     <ion-item>
         <ion-label>Batch Name</ion-label>
-        <div item-end>{{machine().BatchName}}</div>
+        <div item-end>{{machine.BatchName}}</div>
     </ion-item>
   </ion-card>
 
@@ -49,10 +61,6 @@
         <div item-end>Running</div>
     </ion-item>
     <ion-item>
-        <ion-label>Main Temp</ion-label>
-        <div item-end>60</div>
-    </ion-item>
-    <ion-item>
         <ion-label>DyeProgName</ion-label>
         <div item-end>xxx</div>
     </ion-item>
@@ -76,19 +84,19 @@
     </ion-item-divider>
     <ion-item>
         <ion-label>Loading</ion-label>
-        <div item-end>{{machine().Loading}}</div>
+        <div item-end>{{machine.Loading}}</div>
     </ion-item>
     <ion-item>
         <ion-label>Water</ion-label>
-        <div item-end>{{machine().Water_Vol1_Total}}</div>
+        <div item-end>{{machine.Water_Vol1_Total}}</div>
     </ion-item>
     <ion-item>
         <ion-label>Steam</ion-label>
-        <div item-end>{{machine().Steam_Vol_Total}}</div>
+        <div item-end>{{machine.Steam_Vol_Total}}</div>
     </ion-item>
     <ion-item>
         <ion-label>Power</ion-label>
-        <div item-end>{{machine().Power_Total}}</div>
+        <div item-end>{{machine.Power_Total}}</div>
     </ion-item>
   </ion-card>
 </ion-content>

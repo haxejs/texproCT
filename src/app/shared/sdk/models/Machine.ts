@@ -5,15 +5,22 @@ export interface MachineInterface {
   "updatedAt"?: Date;
   "companyName"?: string;
   "dtrSenderName"?: string;
+  "tempArray"?: Array<any>;
   "MachineNumber": number;
+  "OnLine": number;
   "MachineName": string;
   "MachineState"?: string;
   "MachineMode"?: string;
   "MachineCallState"?: string;
   "BatchName"?: string;
   "DyeProgName"?: string;
+  "Sub_DyeProgName"?: string;
   "DyeProgNumber"?: number;
   "DyeProgStep"?: number;
+  "Main_Vol"?: number;
+  "TankB_Vol"?: number;
+  "TankC_Vol"?: number;
+  "Main_Alarm"?: number;
   "Loading"?: number;
   "Ratio_1"?: string;
   "Ratio_2"?: string;
@@ -49,12 +56,30 @@ export interface MachineInterface {
   "MachineAOut6"?: string;
   "MachineAOut7"?: string;
   "MachineAOut8"?: string;
+  "Ch_1_CycleTime"?: number;
+  "Ch_2_CycleTime"?: number;
+  "Ch_3_CycleTime"?: number;
+  "Ch_4_CycleTime"?: number;
+  "Ch_5_CycleTime"?: number;
+  "Ch_6_CycleTime"?: number;
+  "Ch_7_CycleTime"?: number;
+  "Ch_8_CycleTime"?: number;
   "Water_Vol1_Total"?: string;
   "Water_Vol2_Total"?: string;
   "Water_Vol3_Total"?: string;
   "Water_Vol4_Total"?: string;
   "Steam_Vol_Total"?: string;
   "Power_Total"?: string;
+  "Str_Space_1"?: string;
+  "Str_Space_2"?: string;
+  "Str_Space_3"?: string;
+  "Str_Space_4"?: string;
+  "Str_Space_5"?: string;
+  "Integer_Space_1"?: number;
+  "Integer_Space_2"?: number;
+  "Integer_Space_3"?: number;
+  "Integer_Space_4"?: number;
+  "Integer_Space_5"?: number;
   "id"?: number;
   "companyId"?: number;
   "dtrSenderId"?: number;
@@ -66,15 +91,22 @@ export class Machine implements MachineInterface {
   "updatedAt": Date = new Date(0);
   "companyName": string = '';
   "dtrSenderName": string = '';
+  "tempArray": Array<any> = <any>[];
   "MachineNumber": number = 0;
+  "OnLine": number = 0;
   "MachineName": string = '';
   "MachineState": string = '';
   "MachineMode": string = '';
   "MachineCallState": string = '';
   "BatchName": string = '';
   "DyeProgName": string = '';
+  "Sub_DyeProgName": string = '';
   "DyeProgNumber": number = 0;
   "DyeProgStep": number = 0;
+  "Main_Vol": number = 0;
+  "TankB_Vol": number = 0;
+  "TankC_Vol": number = 0;
+  "Main_Alarm": number = 0;
   "Loading": number = 0;
   "Ratio_1": string = '';
   "Ratio_2": string = '';
@@ -110,12 +142,30 @@ export class Machine implements MachineInterface {
   "MachineAOut6": string = '';
   "MachineAOut7": string = '';
   "MachineAOut8": string = '';
+  "Ch_1_CycleTime": number = 0;
+  "Ch_2_CycleTime": number = 0;
+  "Ch_3_CycleTime": number = 0;
+  "Ch_4_CycleTime": number = 0;
+  "Ch_5_CycleTime": number = 0;
+  "Ch_6_CycleTime": number = 0;
+  "Ch_7_CycleTime": number = 0;
+  "Ch_8_CycleTime": number = 0;
   "Water_Vol1_Total": string = '';
   "Water_Vol2_Total": string = '';
   "Water_Vol3_Total": string = '';
   "Water_Vol4_Total": string = '';
   "Steam_Vol_Total": string = '';
   "Power_Total": string = '';
+  "Str_Space_1": string = '';
+  "Str_Space_2": string = '';
+  "Str_Space_3": string = '';
+  "Str_Space_4": string = '';
+  "Str_Space_5": string = '';
+  "Integer_Space_1": number = 0;
+  "Integer_Space_2": number = 0;
+  "Integer_Space_3": number = 0;
+  "Integer_Space_4": number = 0;
+  "Integer_Space_5": number = 0;
   "id": number = 0;
   "companyId": number = 0;
   "dtrSenderId": number = 0;
@@ -166,8 +216,16 @@ export class Machine implements MachineInterface {
           name: 'dtrSenderName',
           type: 'string'
         },
+        "tempArray": {
+          name: 'tempArray',
+          type: 'Array&lt;any&gt;'
+        },
         "MachineNumber": {
           name: 'MachineNumber',
+          type: 'number'
+        },
+        "OnLine": {
+          name: 'OnLine',
           type: 'number'
         },
         "MachineName": {
@@ -194,12 +252,32 @@ export class Machine implements MachineInterface {
           name: 'DyeProgName',
           type: 'string'
         },
+        "Sub_DyeProgName": {
+          name: 'Sub_DyeProgName',
+          type: 'string'
+        },
         "DyeProgNumber": {
           name: 'DyeProgNumber',
           type: 'number'
         },
         "DyeProgStep": {
           name: 'DyeProgStep',
+          type: 'number'
+        },
+        "Main_Vol": {
+          name: 'Main_Vol',
+          type: 'number'
+        },
+        "TankB_Vol": {
+          name: 'TankB_Vol',
+          type: 'number'
+        },
+        "TankC_Vol": {
+          name: 'TankC_Vol',
+          type: 'number'
+        },
+        "Main_Alarm": {
+          name: 'Main_Alarm',
           type: 'number'
         },
         "Loading": {
@@ -342,6 +420,38 @@ export class Machine implements MachineInterface {
           name: 'MachineAOut8',
           type: 'string'
         },
+        "Ch_1_CycleTime": {
+          name: 'Ch_1_CycleTime',
+          type: 'number'
+        },
+        "Ch_2_CycleTime": {
+          name: 'Ch_2_CycleTime',
+          type: 'number'
+        },
+        "Ch_3_CycleTime": {
+          name: 'Ch_3_CycleTime',
+          type: 'number'
+        },
+        "Ch_4_CycleTime": {
+          name: 'Ch_4_CycleTime',
+          type: 'number'
+        },
+        "Ch_5_CycleTime": {
+          name: 'Ch_5_CycleTime',
+          type: 'number'
+        },
+        "Ch_6_CycleTime": {
+          name: 'Ch_6_CycleTime',
+          type: 'number'
+        },
+        "Ch_7_CycleTime": {
+          name: 'Ch_7_CycleTime',
+          type: 'number'
+        },
+        "Ch_8_CycleTime": {
+          name: 'Ch_8_CycleTime',
+          type: 'number'
+        },
         "Water_Vol1_Total": {
           name: 'Water_Vol1_Total',
           type: 'string'
@@ -365,6 +475,46 @@ export class Machine implements MachineInterface {
         "Power_Total": {
           name: 'Power_Total',
           type: 'string'
+        },
+        "Str_Space_1": {
+          name: 'Str_Space_1',
+          type: 'string'
+        },
+        "Str_Space_2": {
+          name: 'Str_Space_2',
+          type: 'string'
+        },
+        "Str_Space_3": {
+          name: 'Str_Space_3',
+          type: 'string'
+        },
+        "Str_Space_4": {
+          name: 'Str_Space_4',
+          type: 'string'
+        },
+        "Str_Space_5": {
+          name: 'Str_Space_5',
+          type: 'string'
+        },
+        "Integer_Space_1": {
+          name: 'Integer_Space_1',
+          type: 'number'
+        },
+        "Integer_Space_2": {
+          name: 'Integer_Space_2',
+          type: 'number'
+        },
+        "Integer_Space_3": {
+          name: 'Integer_Space_3',
+          type: 'number'
+        },
+        "Integer_Space_4": {
+          name: 'Integer_Space_4',
+          type: 'number'
+        },
+        "Integer_Space_5": {
+          name: 'Integer_Space_5',
+          type: 'number'
         },
         "id": {
           name: 'id',

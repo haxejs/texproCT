@@ -40,11 +40,11 @@ export class HomePage {
   }
 
   public completedBatches(){
-    return this.batches.filter(batch => {return batch.MachineNumber == 10});
+    return this.batches.filter(batch => {return batch.completed == 1});
   }
 
   public uncompletedBatches(){
-    return this.batches.filter(batch => {return batch.MachineNumber == 11});
+    return this.batches.filter(batch => {return batch.completed == 0});
   }
 
   public completedLoading(){

@@ -1,27 +1,23 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Completed Batches</ion-title>
+    <ion-title>Completed Batches({{batches.length}})</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-
   <ion-card>
     <ion-item-divider>
-      <div>Total Batches: 7</div>
-      <div item-end>Total Loading: 140</div>
+      <div>Total Loading: {{loadingTotal}}</div>
+      <div item-end>Total Power: {{powerTotal}}</div>
     </ion-item-divider>
     <ion-item-divider>
-      <div>Total Water: 150</div>
-      <div item-end>Total Power: 110</div>
+      <div>Total Water: {{waterTotal}}</div>
+      <div item-end>Total Steam: {{steamTotal}}</div>
     </ion-item-divider>
   </ion-card>
 
-  <ion-card>    
-    <canvas *ngIf="lineChartData.length > 0" baseChart width="200" height="350"
+  <ion-card *ngIf="batches.length > 0">    
+    <canvas baseChart width="200" height="350"
               [datasets]="lineChartData"
               [labels]="lineChartLabels"
               [options]="lineChartOptions"

@@ -3,6 +3,7 @@
 declare var Object: any;
 export interface BatchInterface {
   "updatedAt"?: Date;
+  "completed"?: number;
   "companyName"?: string;
   "dtrSenderName"?: string;
   "BatchName": string;
@@ -24,6 +25,7 @@ export interface BatchInterface {
 
 export class Batch implements BatchInterface {
   "updatedAt": Date = new Date(0);
+  "completed": number = 0;
   "companyName": string = '';
   "dtrSenderName": string = '';
   "BatchName": string = '';
@@ -77,6 +79,10 @@ export class Batch implements BatchInterface {
         "updatedAt": {
           name: 'updatedAt',
           type: 'Date'
+        },
+        "completed": {
+          name: 'completed',
+          type: 'number'
         },
         "companyName": {
           name: 'companyName',

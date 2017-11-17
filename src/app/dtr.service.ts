@@ -51,6 +51,7 @@ export class DTRService {
     },err => {
     	console.dir(err);
       this.isLoginning = false;
+      //TODO:need a way to store credentials so user does not need to login again when token expires
       //this.login({"email": "dtr@ugen.cn","password":"123456"});
     });
   }

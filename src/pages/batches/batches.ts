@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, OnDestroy } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { DTRService } from '../../app/dtr.service';
 
 
 
@@ -7,18 +8,93 @@ import { NavController } from 'ionic-angular';
 	selector: 'page-batches',
     templateUrl: 'batches.html'
 })
-export class BatchesPage {
-	public lineChartData:Array<any> = [
-		{data: [65, 59, 80, 81, 56, 55, 40], label: 'Loading'},
-		{data: [45, 59, 67, 81, 43, 55, 33], label: 'Water'},
-		{data: [77, 99, 12, 45, 78, 23, 56], label: 'Steam'},
-		{data: [56, 67, 34, 66, 44, 44, 77], label: 'Power'}
-	];
+export class BatchesPage implements OnDestroy{
+	public lineChartData: Array<any> = [
+		{data: [], label: 'Loading'},
+		{data: [], label: 'Water'},
+		{data: [], label: 'Steam'},
+		{data: [], label: 'Power'}];
 
-	public lineChartLabels:Array<any> = ['BH1101(1)', 'BH1102(3)', 'BH1103(8)', 'BH1104(10)', 'BH1105(11)', 'BH1106(12)', 'BH1107(7)'];
+	public lineChartLabels: Array<string> = [];	
+	public loadingTotal: number =0;
+	public waterTotal: number =0;
+	public steamTotal: number =0;
+	public powerTotal: number =0;
+
+	public batches: Array<any> = [];
+
+	private getLineChartData() {
+		let loadingArr = this.batches.map((batch)=>{return batch.Loading?Number(batch.Loading):0});
+		let waterArr = this.batches.map((batch)=>{return batch.Water_Vol1_Total?Number(batch.Water_Vol1_Total):0});
+		let steamArr = this.batches.map((batch)=>{return batch.Steam_Vol_Total?Number(batch.Steam_Vol_Total):0});
+		let powerArr = this.batches.map((batch)=>{return batch.Power_Total?Number(batch.Power_Total):0});
+		return [
+			{data: loadingArr, label: 'Loading'},
+			{data: waterArr, label: 'Water'},
+			{data: steamArr, label: 'Steam'},
+			{data: powerArr, label: 'Power'}
+		];
+	} 
+
+	private getLineChartLabels(){
+		return this.batches.map((batch)=>{return batch.BatchName});
+	} 
+
+	private update(){
+		this.batches = this.getBatches();
+		this.loadingTotal = this.getLoadingTotal();
+		this.waterTotal = this.getWaterTotal();
+		this.steamTotal = this.getSteamTotal();
+		this.powerTotal = this.getPowerTotal();
+		this.lineChartData = this.getLineChartData();
+
+		//trick to update labels:https://github.com/valor-software/ng2-charts/issues/650
+		let __lineChartLabels = this.getLineChartLabels();
+		if (__lineChartLabels.length != this.lineChartLabels.length){
+			setTimeout(()=>{this.lineChartLabels = __lineChartLabels},0);
+		}
+		
+		this.timeoutHandle = setTimeout(()=>{this.update()},5000);
+	}
+
+	private getBatches(){
+		//TODO: filter by state
+		return this.dtr.batches.filter(batch => {return batch.MachineNumber == 10});
+	}
+
+	private getLoadingTotal(){
+	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Loading?batch.Loading:0) },0);
+	}
+
+	private getWaterTotal(){
+	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Water_Vol1_Total?batch.Water_Vol1_Total:0) },0);
+	}
+
+	private getSteamTotal(){
+	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Steam_Vol_Total?batch.Steam_Vol_Total:0) },0);
+	}
+
+	private getPowerTotal(){
+	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Power_Total?batch.Power_Total:0) },0);
+	}
 
 	public lineChartOptions:any = {
-		responsive: true
+		responsive: true,
+		scales: {
+		    // xAxes: [{
+		    //     gridLines: {		          
+		    //       color:'rgba(0,0,0,0.2)'
+		    //     } 
+		    // }],
+		    yAxes: [{		    	
+		        // gridLines: {
+		        //   color:'rgba(0,0,0,0.2)'
+		        // },
+		        ticks:{	                
+	                beginAtZero:true
+	            }
+		    }]
+		}
 	};
 
 	public lineChartColors:Array<any> = [
@@ -42,5 +118,13 @@ export class BatchesPage {
 	public lineChartLegend:boolean = true;
 	public lineChartType:string = 'horizontalBar';
 
-	constructor(public navCtrl: NavController) {}
+	private timeoutHandle;
+
+	constructor(public navCtrl: NavController, private dtr: DTRService, private navParams: NavParams) {
+		this.update();
+	}
+
+	ngOnDestroy(){
+		if (this.timeoutHandle) clearTimeout(this.timeoutHandle);
+	}
 }
