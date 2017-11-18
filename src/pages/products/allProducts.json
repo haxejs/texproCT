@@ -1,6 +1,7 @@
 [{
 	"name":"高温气液染色机",
 	"category":"machines",
+	"hot":true,
 	"model":"ASH plus",
 	"intro":"新一代气液分离染色机",
 	"imagePath":"assets/products/ash_plus.jpg",
@@ -8,6 +9,7 @@
 },{
 	"name":"高温染色机",
 	"category":"machines",
+	"hot":true,
 	"model":"UFH plus",
 	"intro":"新一代高温染色机",
 	"imagePath":"assets/products/ufh_plus.jpg",
@@ -15,6 +17,7 @@
 },{
 	"name":"高温中样染色机",
 	"category":"machines",
+	"hot":true,
 	"model":"UFH plus MINI",
 	"intro":"新一代高温中样染色机",
 	"imagePath":"assets/products/ufh_plus_mini.jpg",
@@ -22,6 +25,7 @@
 },{
 	"name":"高温快速染色机",
 	"category":"machines",
+	"hot":true,
 	"model":"SHQ",
 	"intro":"专为弹性布及低张力布种的特殊运转要求设计，特低浴比染色1:4-8节能减排。超低机台减小织物张力，染色后缩率小，无折痕，手感更佳。",
 	"imagePath":"assets/products/shq.jpg",
