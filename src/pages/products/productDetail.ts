@@ -12,12 +12,13 @@ import 'rxjs/add/operator/map';
     templateUrl: 'productDetail.html'
 })
 export class ProductDetailPage {
-  descriptionHTML: any;
+  private descriptionHTML: any;
+  private product:any;
 
   constructor(private navCtrl: NavController, private navParams: NavParams, private http: Http) {
-  	console.dir(navParams);
+  	this.product = navParams.data.product;
 
-  	this.http.get('assets/products/ash_plus.html')
+  	this.http.get(this.product.htmlPath)
 	  .map(response => response.text())
 	  .subscribe(html => this.descriptionHTML = html);
   }

@@ -4,14 +4,14 @@
   </ion-navbar>
 
   <ion-segment [(ngModel)]="category">
-    <ion-segment-button value="machine">
-      Machine
+    <ion-segment-button value="machines">
+      Machines
     </ion-segment-button>
-    <ion-segment-button value="equipment">
-      Equipment
+    <ion-segment-button value="equipments">
+      Equipments
     </ion-segment-button>
-    <ion-segment-button value="network">
-      Network
+    <ion-segment-button value="networks">
+      Networks
     </ion-segment-button>
     <ion-segment-button value="parts">
       Parts
@@ -23,54 +23,54 @@
 <ion-content>
 
   <div [ngSwitch]="category">
-    <ion-list *ngSwitchCase="'machine'">
-      <ion-card>
-       <ion-item  detail-push (click)="showProduct()">
+    <ion-list *ngSwitchCase="'machines'">
+      <ion-card *ngFor="let product of machines">
+       <ion-item  detail-push (click)="showProduct(product)">
           <ion-thumbnail item-start>
-            <img src="assets/products/ash_plus.jpg">
+            <img [src]="product.imagePath">
           </ion-thumbnail>
-          <h2>高温气液染色机</h2>
-          <h3>ASH plus</h3>
-          <p>新一代气液分离染色机</p>
+          <h2>{{ product.name }}</h2>
+          <h3>{{ product.model }}</h3>
+          <p>{{ product.intro }}</p>
         </ion-item>
       </ion-card> 
     </ion-list>
 
-    <ion-list *ngSwitchCase="'equipment'">
-      <ion-card>
-        <ion-item  detail-push>
+    <ion-list *ngSwitchCase="'equipments'">
+      <ion-card *ngFor="let product of equipments">
+        <ion-item  detail-push (click)="showProduct(product)">
           <ion-thumbnail item-start>
-            <img src="assets/sontech/foshan_factory.jpg">
+            <img [src]="product.imagePath">
           </ion-thumbnail>
-          <h2>红外线打版机</h2>
-          <h3></h3>
-          <p>红外线打版机应用最新的红外加热技术使烧杯作循环旋转，而不是传统的两种定位红外加热系统,以避免不均匀的加热烧杯。染缸的温度直接由烧杯里的PT-100测量。 本机适用于大部分实验室，这是专为实验室精确控制温度，低能耗，快速和便捷的使用而设计的。</p>
+          <h2>{{ product.name }}</h2>
+          <h3>{{ product.model }}</h3>
+          <p>{{ product.intro }}</p>
         </ion-item>
       </ion-card>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'network'">
-      <ion-card>
-        <ion-item  detail-push (click)="showProduct()">
+    <ion-list *ngSwitchCase="'networks'">
+      <ion-card *ngFor="let product of networks">
+        <ion-item  detail-push (click)="showProduct(product)">
           <ion-thumbnail item-start>
-            <img src="assets/sontech/foshan_factory.jpg">
+            <img [src]="product.imagePath">
           </ion-thumbnail>
-          <h2>DTR中央控制系统</h2>
-          <h3>DTR</h3>
-          <p>可同时监控48台染机的运行状况，提供机组、曲线组及单机流程图模式，及时显示各染机运行中的状况及报警信息。</p>
+          <h2>{{ product.name }}</h2>
+          <h3>{{ product.model }}</h3>
+          <p>{{ product.intro }}</p>
         </ion-item>
       </ion-card>
     </ion-list>
 
     <ion-list *ngSwitchCase="'parts'">
-      <ion-card>
-        <ion-item  detail-push (click)="showProduct()">
+      <ion-card *ngFor="let product of parts">
+        <ion-item  detail-push (click)="showProduct(product)">
           <ion-thumbnail item-start>
-            <img src="assets/sontech/foshan_factory.jpg">
+            <img [src]="product.imagePath">
           </ion-thumbnail>
-          <h2>气动执行器</h2>
-          <h3></h3>
-          <p>适应当今市场的需求，炜德国际开发了VTD72/VTS73系列气动执行器。独特的设计，简洁实用的风格，适用最新国际标准技术规范。安装炜德其他标准配件，可实现各种不同的功能，亦可连接不同国际品牌的阀门和需要旋转的机械装置。</p>
+          <h2>{{ product.name }}</h2>
+          <h3>{{ product.model }}</h3>
+          <p>{{ product.intro }}</p>
         </ion-item>
       </ion-card>
     </ion-list>

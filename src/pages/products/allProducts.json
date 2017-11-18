@@ -1,0 +1,57 @@
+[{
+	"name":"高温气液染色机",
+	"category":"machines",
+	"model":"ASH plus",
+	"intro":"新一代气液分离染色机",
+	"imagePath":"assets/products/ash_plus.jpg",
+	"htmlPath":"assets/products/ash_plus.html"
+},{
+	"name":"",
+	"category":"machines",
+	"model":"",
+	"intro":"",
+	"imagePath":"",
+	"htmlPath":""
+},{
+	"name":"红外线打版机",
+	"category":"equipments",
+	"model":"",
+	"intro":"应用最新的红外加热技术使烧杯作循环旋转，而不是传统的两种定位红外加热系统,以避免不均匀的加热烧杯。染缸的温度直接由烧杯里的PT-100测量。 本机适用于大部分实验室，这是专为实验室精确控制温度，低能耗，快速和便捷的使用而设计的。",
+	"imagePath":"",
+	"htmlPath":""
+},{
+	"name":"",
+	"category":"equipments",
+	"model":"",
+	"intro":"",
+	"imagePath":"",
+	"htmlPath":""
+},{
+	"name":"DTR中央控制系统",
+	"category":"networks",
+	"model":"DTR",
+	"intro":"可同时监控48台染机的运行状况，提供机组、曲线组及单机流程图模式，及时显示各染机运行中的状况及报警信息。",
+	"imagePath":"",
+	"htmlPath":""
+},{
+	"name":"",
+	"category":"networks",
+	"model":"",
+	"intro":"",
+	"imagePath":"",
+	"htmlPath":""
+},{
+	"name":"气动执行器",
+	"category":"parts",
+	"model":"",
+	"intro":"独特的设计，简洁实用的风格，适用最新国际标准技术规范。安装炜德其他标准配件，可实现各种不同的功能，亦可连接不同国际品牌的阀门和需要旋转的机械装置。",
+	"imagePath":"",
+	"htmlPath":""
+},{
+	"name":"",
+	"category":"parts",
+	"model":"",
+	"intro":"",
+	"imagePath":"",
+	"htmlPath":""
+}]
