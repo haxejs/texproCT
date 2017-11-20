@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Services
+      {{"SERVICES"|translate}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,13 +9,13 @@
 <ion-content>
   <ion-card *ngFor="let office of offices">
     <ion-card-header>
-      {{ office.name }}
+      {{ office.name | translate }}
     </ion-card-header>
     <ion-card-content >      
-      <p>{{ office.address }}</p>
+      <p>{{ office.address | translate }}</p>
       <ion-item no-padding>
-        <p>电话：{{ office.tel }}</p>
-        <p *ngIf="office.fax">传真：{{ office.fax }}</p>
+        <p>{{"TEL" | translate}}：{{ office.tel }}</p>
+        <p *ngIf="office.fax">{{"FAX" | translate}}：{{ office.fax }}</p>
         <a ion-button clear large item-end [href]="'tel:'+office.tel">
           <ion-icon name="call"></ion-icon>
         </a>

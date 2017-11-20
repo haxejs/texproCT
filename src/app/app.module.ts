@@ -1,8 +1,11 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { Http, HttpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { MyApp } from './app.component';
 
@@ -28,6 +31,9 @@ import { SDKBrowserModule } from './shared/sdk/index';
 
 import { DTRService } from './dtr.service';
 
+export function createTranslateLoader(http: HttpClient): TranslateLoader {
+  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -49,8 +55,16 @@ import { DTRService } from './dtr.service';
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     ChartsModule,
     SDKBrowserModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     IonicModule.forRoot(MyApp,{
       backButtonIcon: 'md-arrow-back',
       backButtonText: ''
@@ -76,6 +90,7 @@ import { DTRService } from './dtr.service';
     StatusBar,
     SplashScreen,
     DTRService,
+    TranslateService, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

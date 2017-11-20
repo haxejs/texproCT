@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
@@ -8,7 +8,7 @@ import { ProductsPage } from '../products/products';
 @Component({
   templateUrl: 'tabs.html'
 })
-export class TabsPage {
+export class TabsPage implements OnDestroy{
 
   tab1Root = HomePage;
   tab2Root = ProductsPage;
@@ -16,6 +16,8 @@ export class TabsPage {
   tab4Root = AboutPage;
 
   constructor() {
+  }
 
+  ngOnDestroy(){
   }
 }

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Setting
+      {{"SETTING"|translate}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -11,23 +11,22 @@
    <ion-list>
     <ion-item>           
       <ion-icon name='notifications' item-start></ion-icon>
-      <ion-label>Push notifications</ion-label>
+      <ion-label>{{"PUSH_NOTIFICATION"|translate}}</ion-label>
       <ion-toggle checked="true" item-end></ion-toggle>
     </ion-item>
 
     <ion-item>
       <ion-icon name='globe' item-start></ion-icon>
-      <ion-label>Language</ion-label>
-      <ion-select [(ngModel)]="language" item-end>
-	    <ion-option value="en">English</ion-option>
-	    <ion-option value="zh_cn">Simple Chinese</ion-option>
-	    <ion-option value="tw_cn">Traditional Chinese</ion-option>	      
-	  </ion-select>
+      <ion-label>{{"LANGUAGE"|translate}}</ion-label>
+      <ion-select [ngModel]="language" item-end (ngModelChange)="onChange($event)">
+  	    <ion-option value="en">{{"ENGLISH"|translate}}</ion-option>
+  	    <ion-option value="zh">{{"CHINESE"|translate}}</ion-option>      
+  	  </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-icon name='information-circle' item-start></ion-icon>
-      <ion-label>Current version</ion-label>
+      <ion-label>{{"CURRENT_VERSION"|translate}}</ion-label>
       <ion-note item-end>{{ version }}</ion-note>
     </ion-item>    
    </ion-list>  	  
@@ -36,23 +35,23 @@
   <ion-card *ngIf="dtr.isAuthenticated()">
     <ion-list>
       <ion-item-divider>
-        My info
+        {{"MY_INFO"|translate}}
         <!-- <button ion-button icon-only clear item-end><ion-icon name="create"></ion-icon></button> -->
       </ion-item-divider>
       <ion-item>
-        <ion-label>Name</ion-label>
+        <ion-label>{{"NAME"|translate}}</ion-label>
         <ion-note item-end>{{ dtr.getCachedCurrent().fullName }}</ion-note>
       </ion-item>
       <ion-item>
-        <ion-label>Email</ion-label>
+        <ion-label>{{"EMAIL"|translate}}</ion-label>
         <ion-note item-end>{{ dtr.getCachedCurrent().email }}</ion-note>
       </ion-item>
       <ion-item>
-        <ion-label>Mobile</ion-label>
+        <ion-label>{{"MOBILE"|translate}}</ion-label>
         <ion-note item-end>{{ dtr.getCachedCurrent().username }}</ion-note>
       </ion-item>
       <ion-item>
-        <ion-label>Role</ion-label>
+        <ion-label>{{"ROLE"|translate}}</ion-label>
         <ion-note item-end>{{ dtr.getCachedCurrent().roleName }}</ion-note>
       </ion-item>
     </ion-list>
@@ -60,8 +59,8 @@
 
   <ion-card>
     <ion-card-content>
-        <button ion-button full color="primary" (click)="login()" *ngIf="!dtr.isAuthenticated()"><ion-icon name="log-in"></ion-icon>Login</button>
-  	    <button ion-button full color="danger" (click)="logout()" *ngIf="dtr.isAuthenticated()"><ion-icon name="log-out"></ion-icon>Logout</button>
+        <button ion-button full color="primary" (click)="login()" *ngIf="!dtr.isAuthenticated()"><ion-icon name="log-in"></ion-icon>{{"LOGIN"|translate}}</button>
+  	    <button ion-button full color="danger" (click)="logout()" *ngIf="dtr.isAuthenticated()"><ion-icon name="log-out"></ion-icon>{{"LOGOUT"|translate}}</button>
     </ion-card-content>  
   </ion-card>
 </ion-content>

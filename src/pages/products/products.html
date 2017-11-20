@@ -1,20 +1,20 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Products</ion-title>
+    <ion-title>{{'PRODUCTS'|translate}}</ion-title>
   </ion-navbar>
 
   <ion-segment [(ngModel)]="category">
     <ion-segment-button value="machines">
-      Machines
+      {{"Machines" | translate}}
     </ion-segment-button>
     <ion-segment-button value="equipments">
-      Equipments
+      {{"Equipments" | translate}}
     </ion-segment-button>
     <ion-segment-button value="networks">
-      Networks
+      {{"Networks" | translate}}
     </ion-segment-button>
     <ion-segment-button value="parts">
-      Parts
+      {{"Parts" | translate}}
     </ion-segment-button>
   </ion-segment>
 

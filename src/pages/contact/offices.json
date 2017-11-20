@@ -1,25 +1,25 @@
 [{
-	"name":"佛山市三技精密机械有限公司",
-	"address":"广东省佛山市禅城区国家高新技术开发区华宝南路中段",
+	"name":"office1.name",
+	"address":"office1.address",
 	"tel":"+86-757-83618868",
 	"fax":"+86-757-83618080"
 },{
-	"name":"汕头办事处",
-	"address":"汕头市潮南区峡山镇华南广场",
+	"name":"office2.name",
+	"address":"office2.address",
 	"tel":"+86-754-83791995",
 	"fax":"+86-754-83791995"
 },{
-	"name":"浙江绍兴办事处",
-	"address":"浙江省绍兴市柯桥区安昌镇",
+	"name":"office3.name",
+	"address":"office3.address",
 	"tel":"+86-575-81185319",
 	"fax":"+86-575-81185319"
 },{
-	"name":"江苏苏州办事处",
-	"address":"江苏省苏州市姑苏区苏站路港龙城",
+	"name":"office4.name",
+	"address":"office4.address",
 	"tel":"+86-18680030269"
 },{
-	"name":"福建办事处",
-	"address":"福建省晋江市罗山福埔工业综合开发区华泰国际新城",
+	"name":"office5.name",
+	"address":"office5.address",
 	"tel":"+86-18929099888",
 	"fax":"+86-595-8116230"
 }]
