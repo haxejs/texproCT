@@ -73,7 +73,7 @@ export class HomePage {
 
   public requestRepair() {
     if (this.dtr.isAuthenticated()){
-      let myModal = this.modalCtrl.create(RequestPage, { myParam: 'unknown' });
+      let myModal = this.modalCtrl.create(RequestPage);
       myModal.present();
     } else {
       this.login();
@@ -81,7 +81,7 @@ export class HomePage {
   }
 
   public login() {
-    let myModal = this.modalCtrl.create(LoginPage, { myParam: 'username' });
+    let myModal = this.modalCtrl.create(LoginPage);
     myModal.present();
   }
 

@@ -35,18 +35,18 @@
       {{"TODAY_BATCH_REPORT"|translate}}
     </ion-item-divider>
     <ion-card-content class="row">
-      <div id="completedBatches" padding-horizontal class="itemWide" tappable (click)="showBatches(1)">
+      <div id="completedBatches" padding-horizontal class="itemWide" tappable (click)="showBatches('completed')">
         <div class="contrastBackgroundColor">
           <div class="truncate">{{"completed"|translate}}</div>
-          <div>{{"batches"|translate}}: {{ completedBatches().length }}</div>
-          <div>{{"loading"|translate}}: {{ completedLoading() }}</div>
+          <div>{{"Batches"|translate}}: {{ completedBatches().length }}</div>
+          <div>{{"Loading"|translate}}: {{ completedLoading() }}</div>
         </div>        
       </div>
-      <div id="producingBatches" padding-horizontal class="itemWide" tappable (click)="showBatches(0)">
+      <div id="producingBatches" padding-horizontal class="itemWide" tappable (click)="showBatches('uncompleted')">
         <div class="contrastBackgroundColor">
           <div class="truncate">{{"uncompleted"|translate}}</div>
-          <div>{{"batches"|translate}}: {{ uncompletedBatches().length }}</div>
-          <div>{{"loading"|translate}}: {{ uncompletedLoading() }}</div>
+          <div>{{"Batches"|translate}}: {{ uncompletedBatches().length }}</div>
+          <div>{{"Loading"|translate}}: {{ uncompletedLoading() }}</div>
         </div>
       </div>
     </ion-card-content>

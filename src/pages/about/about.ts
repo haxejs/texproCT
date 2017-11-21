@@ -17,6 +17,8 @@ export class AboutPage {
 
   public version:string;
 
+  public texts: any = {};
+
   constructor(private navCtrl: NavController, 
     private modalCtrl: ModalController, 
     private alertCtrl: AlertController,
@@ -24,6 +26,8 @@ export class AboutPage {
     private translate: TranslateService) {
   	this.language = translate.currentLang;
   	this.version = myPackage.version;
+    this.translate.get(['Sure', 'Cancel', 'LOGOUT_ALERT_TITLE'])
+    .subscribe(texts => this.texts = texts);
   }
 
   public onChange(lang){
@@ -37,16 +41,16 @@ export class AboutPage {
 
   public logout() {
     let confirm = this.alertCtrl.create({
-      title: 'Are you sure to logout?',
+      title: this.texts.LOGOUT_ALERT_TITLE,
       buttons: [
         {
-          text: 'Sure',
+          text: this.texts.Sure,
           handler: () => {
             this.dtr.logout();
           }
         },
         {
-          text: 'Cancel',
+          text: this.texts.Cancel,
           handler: () => {
             console.log('Cancel clicked');
           }

@@ -56,14 +56,14 @@ export class DTRService {
     });
   }
 
-  public login(credentials: any){
+  public login(credentials: any, errCallback:Function){
   	this.customerApi.login(credentials).subscribe(()=>{
       this.machines.splice(0,this.machines.length);
       this.batches.splice(0,this.batches.length);
   		//if (this.realtime.connection) this.realtime.connection.disconnect();
       this.isLoginning = true;
   		this.flashData();
-  	});
+  	}, (err) => {if (errCallback) errCallback(err)});
   }
 
   public isAuthenticated(){

@@ -58,7 +58,11 @@ export class BatchesPage implements OnDestroy{
 	}
 
 	private getBatches(){
-		return this.dtr.batches.filter(batch => {return batch.completed == this.state});
+		if (this.state == "completed"){
+			return this.dtr.batches.filter(batch => {return batch.completed == 1});
+		} else {
+			return this.dtr.batches.filter(batch => {return batch.completed == 0});
+		}		
 	}
 
 	private getLoadingTotal(){
@@ -118,7 +122,7 @@ export class BatchesPage implements OnDestroy{
 	public lineChartType:string = 'horizontalBar';
 
 	private timeoutHandle;
-	private state:number = 0;
+	private state:string;
 
 	constructor(public navCtrl: NavController, private dtr: DTRService, private navParams: NavParams) {
 		this.state = navParams.data.state;		

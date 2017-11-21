@@ -1,18 +1,18 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{state?'Completed':'Producing'}} Batches({{batches.length}})</ion-title>
+    <ion-title>{{"Batches" | translate}}({{state | translate}}:{{batches.length}})</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
     <ion-item-divider>
-      <div>Total Loading: {{loadingTotal}}</div>
-      <div item-end>Total Power: {{powerTotal}}</div>
+      <div>{{"Total Loading" | translate}}: {{loadingTotal}}</div>
+      <div item-end>{{"Total Power" | translate}}: {{powerTotal}}</div>
     </ion-item-divider>
     <ion-item-divider>
-      <div>Total Water: {{waterTotal}}</div>
-      <div item-end>Total Steam: {{steamTotal}}</div>
+      <div>{{"Total Water" | translate}}: {{waterTotal}}</div>
+      <div item-end>{{"Total Steam" | translate}}: {{steamTotal}}</div>
     </ion-item-divider>
   </ion-card>
 

@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card id="tempChart">
+  <ion-card id="tempChart" *ngIf="machine.OnLine != 0">
     <canvas *ngIf="lineChartData.length > 0" baseChart width="100%" height="40"
                 [datasets]="lineChartData"
                 [labels]="lineChartLabels"
@@ -14,88 +14,85 @@
                 [legend]="lineChartLegend"
                 [chartType]="lineChartType">
     </canvas>
-    <ion-label>Temperature: {{machine.MachineMainTemp}}</ion-label>
+    <ion-label>{{"Temperature" | translate}}: {{machine.MachineMainTemp}}°C</ion-label>
   </ion-card>
 
   <ion-card ion-list>
   	<ion-item-divider>
-      Machine info
+      {{"MACHINE_INFO" | translate}}
     </ion-item-divider>
     <ion-item>
-        <ion-label>Machine Num.</ion-label>
+        <ion-label>{{"MACHINE_NUMBER" | translate}}</ion-label>
         <div item-end>{{machine.MachineNumber}}</div>
     </ion-item>
     <ion-item>
-        <ion-label>Machine Name</ion-label>
+        <ion-label>{{"MACHINE_NAME" | translate}}</ion-label>
         <div item-end>{{machine.MachineName}}</div>
-    </ion-item>
-    <ion-item>
-        <ion-label>Batch Name</ion-label>
-        <div item-end>{{machine.BatchName}}</div>
     </ion-item>
   </ion-card>
 
-  <ion-card ion-list>
+  <ion-card ion-list *ngIf="machine.Main_Alarm > 0">
   	<ion-item-divider>
-      User warning
+      {{"MACHINE_ALARM" | translate}}
     </ion-item-divider>
     <ion-card-content>
-      <p>Machine is running manually</p>
+      <p style="color:red;">{{("Main_Alarm" + machine.Main_Alarm) | translate}}</p>
     </ion-card-content>
   </ion-card>
 
-  <ion-card ion-list>
+  <ion-card ion-list *ngIf="machine.OnLine != 0">
   	<ion-item-divider>
-      Machine state
+      {{"MACHINE_STATE" | translate}}
     </ion-item-divider>
     <ion-item>
-        <ion-label>CallState</ion-label>
-        <div item-end>Connected</div>
+        <ion-label>{{"MACHINE_CALLSTATE" | translate}}</ion-label>
+        <div item-end>{{("MachineCallState" + machine.MachineCallState) | translate}}</div>
     </ion-item>
     <ion-item>
-        <ion-label>Machine Mode</ion-label>
-        <div item-end>DTR</div>
+        <ion-label>{{"MACHINE_MODE" | translate}}</ion-label>
+        <div item-end>{{("MachineMode" + machine.MachineMode) | translate}}</div>
     </ion-item>
     <ion-item>
-        <ion-label>Machine State</ion-label>
-        <div item-end>Running</div>
+        <ion-label>{{"MACHINE_STATE" | translate}}</ion-label>
+        <div item-end>{{("MachineState" + machine.MachineState) | translate}}</div>
     </ion-item>
     <ion-item>
-        <ion-label>DyeProgName</ion-label>
-        <div item-end>xxx</div>
+        <ion-label>{{"DyeProgName" | translate}}</ion-label>
+        <div item-end>{{machine.DyeProgName}}</div>
     </ion-item>
     <ion-item>
-        <ion-label>DyeProgNumber</ion-label>
-        <div item-end>1</div>
+        <ion-label>{{"DyeProgNumber" | translate}}</ion-label>
+        <div item-end>{{machine.DyeProgNumber}}</div>
     </ion-item>
     <ion-item>
-        <ion-label>DyeProgStep</ion-label>
-        <div item-end>3</div>
+        <ion-label>{{"DyeProgStep" | translate}}</ion-label>
+        <div item-end>{{machine.DyeProgStep}}</div>
     </ion-item>
-    <ion-item>
-        <ion-label>{{ MachineIns1_Text }}</ion-label>
-        <div item-end>{{ MachineIns1_Value }}</div>
+    <ion-item *ngIf="machine.MachineIns1_Text.length > 0">
+        <ion-label>{{ machine.MachineIns1_Text }}</ion-label>
+        <div item-end>{{ machine.MachineIns1_Value }}</div>
     </ion-item>
   </ion-card>
 
-  <ion-card ion-list>
+  <ion-card ion-list *ngIf="machine.Loading > 0">
   	<ion-item-divider>
-      Parameters
+      <ion-label>{{"BATCH_NAME" | translate}}</ion-label>
+      <div item-end>{{machine.BatchName}}</div>
     </ion-item-divider>
     <ion-item>
-        <ion-label>Loading</ion-label>
+        <ion-label>{{"Loading" | translate}}</ion-label>
         <div item-end>{{machine.Loading}}</div>
     </ion-item>
     <ion-item>
-        <ion-label>Water</ion-label>
+        <ion-label>{{"Water" | translate}}</ion-label>
         <div item-end>{{machine.Water_Vol1_Total}}</div>
     </ion-item>
     <ion-item>
-        <ion-label>Steam</ion-label>
+        <ion-label>{{"Steam" | translate}}</ion-label>
         <div item-end>{{machine.Steam_Vol_Total}}</div>
     </ion-item>
     <ion-item>
-        <ion-label>Power</ion-label>
+        <ion-label>{{"Power" | translate}}</ion-label>
         <div item-end>{{machine.Power_Total}}</div>
     </ion-item>
   </ion-card>

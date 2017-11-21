@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Machines</ion-title>
+    <ion-title>{{"Machines" | translate}} ({{ state | translate }})</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,21 +11,11 @@
         <div padding item-start>        
           <h1>{{machine.MachineNumber}}</h1>
         </div>
-        <h2>{{machine.MachineName}} ({{machine.BatchName}})</h2>
-        <h3>Running, 45°C, 001, 001, Increase temperature</h3>
-        <p>User warning: manual operations</p>      
+        <h2>{{machine.MachineName}} <span *ngIf="machine.BatchName">({{machine.BatchName}})</span></h2>
+        <h3 *ngIf="machine.OnLine != 0">{{("MachineState" + machine.MachineState) | translate}}, {{machine.MachineMainTemp}}°C, {{machine.DyeProgNumber}}, {{machine.DyeProgStep}}</h3>
+        <h3 *ngIf="machine.OnLine == 0">{{("OnLine" + machine.OnLine) | translate}}</h3>
+        <p *ngIf="machine.Main_Alarm > 0" style="color:red;">{{("Main_Alarm" + machine.Main_Alarm) | translate}}</p>      
       </ion-item>
     </ion-card>
-<!--     
-    <ion-card>
-      <ion-item detail-push (click)="showMachine()">
-        <div padding item-start>
-          <h1>02</h1>
-        </div>
-        <h2>Machine 2 (0123478)</h2>
-        <h3>Running, 80°C, 002, 001, Increase temperature</h3>
-      </ion-item>
-    </ion-card>
--->
   </ion-list>
 </ion-content>
