@@ -8,7 +8,8 @@ import { LoopBackConfig } from './shared/sdk';
 import { TranslateService } from '@ngx-translate/core';
 
 declare var window: any;
-var api_key = 's7dXctRdiXVRtc8PF2PKWjUk';
+declare var require: any;
+var config = require('../../config.json');
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +19,7 @@ export class MyApp {
   //rootPage:any = IntroPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, toastCtrl: ToastController, translate: TranslateService) {
-    LoopBackConfig.setBaseURL('http://192.168.2.104:3000');
+    LoopBackConfig.setBaseURL(config.cloud.baseUrl);
     LoopBackConfig.setApiVersion('api');
 
     translate.setDefaultLang('zh');
@@ -33,11 +34,12 @@ export class MyApp {
       splashScreen.hide();
 
       function showToast(msg){
-        toastCtrl.create({
-          message: JSON.stringify(msg),
-          duration: 3000,
-          position: 'top'
-        }).present();
+        // toastCtrl.create({
+        //   message: JSON.stringify(msg),
+        //   duration: 3000,
+        //   position: 'top'
+        // }).present();
+        console.dir(msg);
       }
      
       if (window.baiduPush) {
@@ -47,7 +49,7 @@ export class MyApp {
 
         window.baiduPush.onNotificationArrived(result => showToast(result), error => showToast(error));
 
-        window.baiduPush.startWork(api_key, result => {}, error => showToast(error));
+        window.baiduPush.startWork(config.baiduPush.api_key, result => {}, error => showToast(error));
       }      
 
     });

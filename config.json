@@ -1,0 +1,9 @@
+{
+	"baiduPush":{
+		"api_key":"s7dXctRdiXVRtc8PF2PKWjUk"
+	},
+	"cloud":{
+		"baseUrl":"http://192.168.2.104:3000"
+	},
+	"productionMode":false
+}

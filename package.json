@@ -32,6 +32,7 @@
         "cordova-plugin-ionic-webview": "^1.1.16",
         "cordova-plugin-push-baidu": "^5.6.1",
         "cordova-plugin-splashscreen": "^4.0.3",
+        "cordova-plugin-statusbar": "^2.3.0",
         "cordova-plugin-whitelist": "^1.3.1",
         "ionic-angular": "3.7.1",
         "ionic-plugin-keyboard": "^2.2.1",
@@ -60,7 +61,8 @@
             "ionic-plugin-keyboard": {},
             "cordova-plugin-push-baidu": {},
             "cordova-hot-code-push-plugin": {},
-            "cordova-hot-code-push-local-dev-addon": {}
+            "cordova-hot-code-push-local-dev-addon": {},
+            "cordova-plugin-statusbar": {}
         },
         "platforms": [
             "android"
