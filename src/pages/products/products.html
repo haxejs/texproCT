@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'PRODUCTS'|translate}}</ion-title>
+  </ion-navbar>
+
+  <ion-segment [(ngModel)]="category">
+    <ion-segment-button value="machines">
+      {{"Machines" | translate}}
+    </ion-segment-button>
+    <ion-segment-button value="equipments">
+      {{"Equipments" | translate}}
+    </ion-segment-button>
+    <ion-segment-button value="networks">
+      {{"Networks" | translate}}
+    </ion-segment-button>
+    <ion-segment-button value="parts">
+      {{"Parts" | translate}}
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-header>
+
+<ion-content>
+
+  <div [ngSwitch]="category">
+    <ion-list *ngSwitchCase="'machines'">
+      <ion-card *ngFor="let product of machines">
+       <ion-item  detail-push (click)="showProduct(product)">
+          <ion-thumbnail item-start>
+            <img [src]="product.imagePath">
+          </ion-thumbnail>
+          <h2>{{ product.name }}</h2>
+          <h3>{{ product.model }}</h3>
+          <p>{{ product.intro }}</p>
+        </ion-item>
+      </ion-card> 
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'equipments'">
+      <ion-card *ngFor="let product of equipments">
+        <ion-item  detail-push (click)="showProduct(product)">
+          <ion-thumbnail item-start>
+            <img [src]="product.imagePath">
+          </ion-thumbnail>
+          <h2>{{ product.name }}</h2>
+          <h3>{{ product.model }}</h3>
+          <p>{{ product.intro }}</p>
+        </ion-item>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'networks'">
+      <ion-card *ngFor="let product of networks">
+        <ion-item  detail-push (click)="showProduct(product)">
+          <ion-thumbnail item-start>
+            <img [src]="product.imagePath">
+          </ion-thumbnail>
+          <h2>{{ product.name }}</h2>
+          <h3>{{ product.model }}</h3>
+          <p>{{ product.intro }}</p>
+        </ion-item>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'parts'">
+      <ion-card *ngFor="let product of parts">
+        <ion-item  detail-push (click)="showProduct(product)">
+          <ion-thumbnail item-start>
+            <img [src]="product.imagePath">
+          </ion-thumbnail>
+          <h2>{{ product.name }}</h2>
+          <h3>{{ product.model }}</h3>
+          <p>{{ product.intro }}</p>
+        </ion-item>
+      </ion-card>
+    </ion-list>
+  </div>
+
+</ion-content>

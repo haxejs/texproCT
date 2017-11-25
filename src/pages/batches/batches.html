@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{"Batches" | translate}}({{state | translate}}:{{batches.length}})</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item-divider>
+      <div>{{"Total Loading" | translate}}: {{loadingTotal}}</div>
+      <div item-end>{{"Total Power" | translate}}: {{powerTotal}}</div>
+    </ion-item-divider>
+    <ion-item-divider>
+      <div>{{"Total Water" | translate}}: {{waterTotal}}</div>
+      <div item-end>{{"Total Steam" | translate}}: {{steamTotal}}</div>
+    </ion-item-divider>
+  </ion-card>
+
+  <ion-card *ngIf="batches.length > 0">    
+    <canvas baseChart width="200" height="350"
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType">
+    </canvas>
+  </ion-card>
+</ion-content>

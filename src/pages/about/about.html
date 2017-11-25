@@ -1,11 +1,66 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      {{"SETTING"|translate}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-card>
+   <ion-list>
+    <ion-item>           
+      <ion-icon name='notifications' item-start></ion-icon>
+      <ion-label>{{"PUSH_NOTIFICATION"|translate}}</ion-label>
+      <ion-toggle checked="true" item-end></ion-toggle>
+    </ion-item>
 
+    <ion-item>
+      <ion-icon name='globe' item-start></ion-icon>
+      <ion-label>{{"LANGUAGE"|translate}}</ion-label>
+      <ion-select [ngModel]="language" item-end (ngModelChange)="onChange($event)">
+  	    <ion-option value="en">{{"ENGLISH"|translate}}</ion-option>
+  	    <ion-option value="zh">{{"CHINESE"|translate}}</ion-option>      
+  	  </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name='information-circle' item-start></ion-icon>
+      <ion-label>{{"CURRENT_VERSION"|translate}}</ion-label>
+      <ion-note item-end>{{ version }}</ion-note>
+    </ion-item>    
+   </ion-list>  	  
+  </ion-card>
+
+  <ion-card *ngIf="dtr.isAuthenticated()">
+    <ion-list>
+      <ion-item-divider>
+        {{"MY_INFO"|translate}}
+        <!-- <button ion-button icon-only clear item-end><ion-icon name="create"></ion-icon></button> -->
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>{{"NAME"|translate}}</ion-label>
+        <ion-note item-end>{{ dtr.getCachedCurrent().fullName }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{"EMAIL"|translate}}</ion-label>
+        <ion-note item-end>{{ dtr.getCachedCurrent().email }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{"MOBILE"|translate}}</ion-label>
+        <ion-note item-end>{{ dtr.getCachedCurrent().username }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{"ROLE"|translate}}</ion-label>
+        <ion-note item-end>{{ dtr.getCachedCurrent().roleName }}</ion-note>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+        <button ion-button full color="primary" (click)="login()" *ngIf="!dtr.isAuthenticated()"><ion-icon name="log-in"></ion-icon>{{"LOGIN"|translate}}</button>
+  	    <button ion-button full color="danger" (click)="logout()" *ngIf="dtr.isAuthenticated()"><ion-icon name="log-out"></ion-icon>{{"LOGOUT"|translate}}</button>
+    </ion-card-content>  
+  </ion-card>
 </ion-content>

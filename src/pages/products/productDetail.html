@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ product.name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-card>
+	  <img [src]="product.imagePath">
+	  <ion-card-content>
+	    <ion-card-title>
+	      {{ product.name }}
+	    </ion-card-title>
+	    <p *ngIf="product.model">产品型号：{{ product.model }}</p>
+	    <p *ngIf="product.intro">产品简介：{{ product.intro }}</p>
+	    <ion-item-divider margin-top margin-bottom>产品说明</ion-item-divider>
+	    <div [innerHTML]="descriptionHTML"></div>
+	  </ion-card-content>
+	</ion-card>
+</ion-content>

@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{machine.MachineNumber}} - {{machine.MachineName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card id="tempChart" *ngIf="machine.OnLine != 0">
+    <canvas *ngIf="lineChartData.length > 0" baseChart width="100%" height="40"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType">
+    </canvas>
+    <ion-label>{{"Temperature" | translate}}: {{machine.MachineMainTemp}}°C</ion-label>
+  </ion-card>
+
+  <ion-card ion-list>
+  	<ion-item-divider>
+      {{"MACHINE_INFO" | translate}}
+    </ion-item-divider>
+    <ion-item>
+        <ion-label>{{"MACHINE_NUMBER" | translate}}</ion-label>
+        <div item-end>{{machine.MachineNumber}}</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>{{"MACHINE_NAME" | translate}}</ion-label>
+        <div item-end>{{machine.MachineName}}</div>
+    </ion-item>
+  </ion-card>
+
+  <ion-card ion-list *ngIf="machine.Main_Alarm > 0">
+  	<ion-item-divider>
+      {{"MACHINE_ALARM" | translate}}
+    </ion-item-divider>
+    <ion-card-content>
+      <p style="color:red;">{{("Main_Alarm" + machine.Main_Alarm) | translate}}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card ion-list *ngIf="machine.OnLine != 0">
+  	<ion-item-divider>
+      {{"MACHINE_STATE" | translate}}
+    </ion-item-divider>
+    <ion-item>
+        <ion-label>{{"MACHINE_CALLSTATE" | translate}}</ion-label>
+        <div item-end>{{("MachineCallState" + machine.MachineCallState) | translate}}</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>{{"MACHINE_MODE" | translate}}</ion-label>
+        <div item-end>{{("MachineMode" + machine.MachineMode) | translate}}</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>{{"MACHINE_STATE" | translate}}</ion-label>
+        <div item-end>{{("MachineState" + machine.MachineState) | translate}}</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>{{"DyeProgName" | translate}}</ion-label>
+        <div item-end>{{machine.DyeProgName}}</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>{{"DyeProgNumber" | translate}}</ion-label>
+        <div item-end>{{machine.DyeProgNumber}}</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>{{"DyeProgStep" | translate}}</ion-label>
+        <div item-end>{{machine.DyeProgStep}}</div>
+    </ion-item>
+    <ion-item *ngIf="machine.MachineIns1_Text.length > 0">
+        <ion-label>{{ machine.MachineIns1_Text }}</ion-label>
+        <div item-end>{{ machine.MachineIns1_Value }}</div>
+    </ion-item>
+  </ion-card>
+
+  <ion-card ion-list *ngIf="machine.Loading > 0">
+  	<ion-item-divider>
+      <ion-label>{{"BATCH_NAME" | translate}}</ion-label>
+      <div item-end>{{machine.BatchName}}</div>
+    </ion-item-divider>
+    <ion-item>
+        <ion-label>{{"Loading" | translate}}</ion-label>
+        <div item-end>{{machine.Loading}}</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>{{"Water" | translate}}</ion-label>
+        <div item-end>{{machine.Water_Vol1_Total}}</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>{{"Steam" | translate}}</ion-label>
+        <div item-end>{{machine.Steam_Vol_Total}}</div>
+    </ion-item>
+    <ion-item>
+        <ion-label>{{"Power" | translate}}</ion-label>
+        <div item-end>{{machine.Power_Total}}</div>
+    </ion-item>
+  </ion-card>
+</ion-content>

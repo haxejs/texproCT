@@ -1,0 +1,43 @@
+carousel {
+	ion-slides {
+		height:40%;
+
+        ion-slide {
+        	width: 100%;
+        	height: 100%;
+        }
+
+        #slide01 {
+        	background:url('../assets/sontech/2017_bajisidan_expo.jpg');
+        	background-size:cover;
+        }
+        #slide02 {
+        	background:url('../assets/sontech/2016_shanghai_expo.jpg');
+        	background-size:cover;
+        }
+        #slide03 {
+        	background:url('../assets/sontech/2017_yuenan_expo.jpg');
+        	background-size:cover;
+        }
+        #slide04 {
+        	background:url('../assets/sontech/foshan_factory.jpg');
+        	background-size:cover;
+        }
+        #slide05 {
+        	background:url('../assets/products/ash_plus.jpg');
+        	background-size:cover;
+        }
+
+		img {
+			height: 100%;
+			object-fit: cover;
+			overflow: hidden;			
+		}
+	}
+
+	@media screen and (min-width: 720px) {
+	  ion-slides {
+	    height:80%;
+	  }
+	}
+}

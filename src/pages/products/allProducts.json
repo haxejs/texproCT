@@ -1,0 +1,159 @@
+[{
+	"name":"高温气液染色机",
+	"category":"machines",
+	"hot":true,
+	"model":"ASH plus",
+	"intro":"新一代气液分离染色机",
+	"imagePath":"assets/products/ash_plus.jpg",
+	"htmlPath":"assets/products/ash_plus.html"
+},{
+	"name":"高温染色机",
+	"category":"machines",
+	"hot":true,
+	"model":"UFH plus",
+	"intro":"新一代高温染色机",
+	"imagePath":"assets/products/ufh_plus.jpg",
+	"htmlPath":"assets/products/ufh_plus.html"
+},{
+	"name":"高温中样染色机",
+	"category":"machines",
+	"hot":true,
+	"model":"UFH plus MINI",
+	"intro":"新一代高温中样染色机",
+	"imagePath":"assets/products/ufh_plus_mini.jpg",
+	"htmlPath":"assets/products/ufh_plus_mini.html"
+},{
+	"name":"高温快速染色机",
+	"category":"machines",
+	"hot":true,
+	"model":"SHQ",
+	"intro":"专为弹性布及低张力布种的特殊运转要求设计，特低浴比染色1:4-8节能减排。超低机台减小织物张力，染色后缩率小，无折痕，手感更佳。",
+	"imagePath":"assets/products/shq.jpg",
+	"htmlPath":"assets/products/shq.html"
+},{
+	"name":"多环松式高温染色机",
+	"category":"machines",
+	"model":"SHD",
+	"intro":"专为纯棉或涤纶混纺，其它化纤混纺及纯化纤布染色而设计。",
+	"imagePath":"assets/products/shd.jpg",
+	"htmlPath":"assets/products/shd.html"
+},{
+	"name":"高温染色机",
+	"category":"machines",
+	"model":"UFH super",
+	"intro":"最新高温染色机",
+	"imagePath":"assets/products/ufh_super.jpg",
+	"htmlPath":"assets/products/ufh_super.html"
+},{
+	"name":"常温染色机",
+	"category":"machines",
+	"model":"UF plus",
+	"intro":"新一代常温染色机",
+	"imagePath":"assets/products/uf_plus.jpg",
+	"htmlPath":"assets/products/uf_plus.html"
+},{
+	"name":"常温染色机",
+	"category":"machines",
+	"model":"SL",
+	"intro":"采用最新的染液循环系统和特殊的双喷嘴设计，结合国外最先进的染色技术研发而成。",
+	"imagePath":"assets/products/sl.jpg",
+	"htmlPath":"assets/products/sl.html"
+},{
+	"name":"红外线打版机",
+	"category":"equipments",
+	"model":"AQUA",
+	"intro":"应用最新的红外加热技术使烧杯作循环旋转，而不是传统的两种定位红外加热系统,以避免不均匀的加热烧杯。染缸的温度直接由烧杯里的PT-100测量。 本机适用于大部分实验室，这是专为实验室精确控制温度，低能耗，快速和便捷的使用而设计的。",
+	"imagePath":"assets/products/aqua.jpg",
+	"htmlPath":"assets/products/aqua.html"
+},{
+	"name":"化验室高温小样染色机",
+	"category":"equipments",
+	"model":"HSD-12/24",
+	"intro":"全机均以优质不锈钢SUS304板材制造，配有精密加热系统，PT100热电偶一个，配可编程温控电脑（带升温速率）。",
+	"imagePath":"assets/products/hsd.jpg",
+	"htmlPath":"assets/products/hsd.html"
+},{
+	"name":"化验室常温小样染色机",
+	"category":"equipments",
+	"model":"ASD-R-12/24",
+	"intro":"全机均以优质不锈钢SUS304板材制造,配有精密加热系统，PT100热电偶一个，配可编程温控电脑（带升温速率）",
+	"imagePath":"assets/products/asd_r12.jpg",
+	"htmlPath":"assets/products/asd_r12.html"
+},{
+	"name":"化验室常温小样染色机",
+	"category":"equipments",
+	"model":"ASD-0-12/24",
+	"intro":"全机均以优质不锈钢SUS304板材制造,配有精密加热系统,PT100热电偶一个，配可编程温控电脑（带升温速率）,一套冷却夹层，配保温机盖;轴封为密封式,一个洗涤水槽，配有冲洗系统。",
+	"imagePath":"assets/products/asd.jpg",
+	"htmlPath":"assets/products/asd.html"
+},{
+	"name":"化验室小型轧车",
+	"category":"equipments",
+	"model":"LP-V",
+	"intro":"机身材质不锈钢SUS304，双气缸置轧捆辊两端，使压力均匀，轧辊材质，高品质丁腈橡胶，轧辊长420mm，直径130mm，硬度邵氏70度。",
+	"imagePath":"assets/products/lpv.jpg",
+	"htmlPath":"assets/products/lpv.html"
+},{
+	"name":"化验室小型定型机",
+	"category":"equipments",
+	"model":"LS-V",
+	"intro":"适用于染整实验室进行烘干、定型、树脂加工焙烘，轧染焙烘和热固色等方面试验，试布尺寸300X400(有效尺寸250X350)。",
+	"imagePath":"assets/products/lsv.jpg",
+	"htmlPath":"assets/products/lsv.html"
+},{
+	"name":"DTR中央控制系统",
+	"category":"networks",
+	"model":"DTR",
+	"intro":"可同时监控48台染机的运行状况，提供机组、曲线组及单机流程图模式，及时显示各染机运行中的状况及报警信息。",
+	"imagePath":"assets/products/dtr.jpg",
+	"htmlPath":"assets/products/dtr.html"
+},{
+	"name":"DTR电脑控制器",
+	"category":"networks",
+	"model":"DTR686",
+	"intro":"德国技术控制器可保障染色工艺的专业性和精确性,中央联线控制系统能实现对整个染色车间的全面电脑化管理和控制。",
+	"imagePath":"assets/products/dtr686.jpg",
+	"htmlPath":"assets/products/dtr686.html"
+},{
+	"name":"BARCO SEDO 程序控制器",
+	"category":"networks",
+	"model":"SEDOMAT 2500",
+	"intro":"德国技术控制器可保障染色工艺的专业性和精确性。 中央联线控制系统能实现对整个染色车间的全面电脑化管理和控制",
+	"imagePath":"assets/products/sedomat.jpg",
+	"htmlPath":"assets/products/sedomat.html"
+},{
+	"name":"气动执行器",
+	"category":"parts",
+	"model":"VTD72/VTS73",
+	"intro":"独特的设计，简洁实用的风格，适用最新国际标准技术规范。安装炜德其他标准配件，可实现各种不同的功能，亦可连接不同国际品牌的阀门和需要旋转的机械装置。",
+	"imagePath":"assets/products/vtd.jpg",
+	"htmlPath":"assets/products/vtd.html"
+},{
+	"name":"蝶阀",
+	"category":"parts",
+	"model":"VF98/VF99",
+	"intro":"炜德阀门用于食品、饮料、化工、纺织染整、污水处理、石油、造纸、燃料输送等。",
+	"imagePath":"assets/products/vf.jpg",
+	"htmlPath":"assets/products/vf.html"
+},{
+	"name":"Y阀",
+	"category":"parts",
+	"model":"YF",
+	"intro":"外壳材料：聚四氟乙烯,控制气体：中性气体、空气",
+	"imagePath":"assets/products/yf.jpg",
+	"htmlPath":"assets/products/yf.html"
+},{
+	"name":"定量比例阀",
+	"category":"parts",
+	"model":"DBF",
+	"intro":"定量加料比例阀",
+	"imagePath":"assets/products/dbf.jpg",
+	"htmlPath":"assets/products/dbf.html"
+},{
+	"name":"温控比例阀",
+	"category":"parts",
+	"model":"WDF",
+	"intro":"PID温度控制阀",
+	"imagePath":"assets/products/wbf.jpg",
+	"htmlPath":"assets/products/wbf.html"
+}]

@@ -1,17 +1,25 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      {{"SERVICES"|translate}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <ion-card *ngFor="let office of offices">
+    <ion-card-header>
+      {{ office.name | translate }}
+    </ion-card-header>
+    <ion-card-content >      
+      <p>{{ office.address | translate }}</p>
+      <ion-item no-padding>
+        <p>{{"TEL" | translate}}：{{ office.tel }}</p>
+        <p *ngIf="office.fax">{{"FAX" | translate}}：{{ office.fax }}</p>
+        <a ion-button clear large item-end [href]="'tel:'+office.tel">
+          <ion-icon name="call"></ion-icon>
+        </a>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

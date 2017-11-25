@@ -1,0 +1,25 @@
+[{
+	"name":"office1.name",
+	"address":"office1.address",
+	"tel":"+86-757-83618868",
+	"fax":"+86-757-83618080"
+},{
+	"name":"office2.name",
+	"address":"office2.address",
+	"tel":"+86-754-83791995",
+	"fax":"+86-754-83791995"
+},{
+	"name":"office3.name",
+	"address":"office3.address",
+	"tel":"+86-575-81185319",
+	"fax":"+86-575-81185319"
+},{
+	"name":"office4.name",
+	"address":"office4.address",
+	"tel":"+86-18680030269"
+},{
+	"name":"office5.name",
+	"address":"office5.address",
+	"tel":"+86-18929099888",
+	"fax":"+86-595-8116230"
+}]

@@ -1,6 +1,6 @@
 {
-    "name": "dtrapp",
-    "version": "1.0.1",
+    "name": "texproCT",
+    "version": "1.0.2",
     "private": true,
     "scripts": {
         "clean": "ionic-app-scripts clean",
@@ -23,17 +23,20 @@
         "@ionic-native/status-bar": "4.3.2",
         "@ionic/pro": "^1.0.11",
         "@ionic/storage": "2.0.1",
+        "@ngx-translate/core": "^8.0.0",
+        "@ngx-translate/http-loader": "^2.0.0",
         "cordova-android": "^6.3.0",
-        "cordova-hot-code-push-local-dev-addon": "^0.4.2",
         "cordova-hot-code-push-plugin": "^1.5.3",
         "cordova-plugin-device": "^1.1.6",
         "cordova-plugin-ionic-webview": "^1.1.16",
         "cordova-plugin-push-baidu": "^5.6.1",
         "cordova-plugin-splashscreen": "^4.0.3",
+        "cordova-plugin-statusbar": "^2.3.0",
         "cordova-plugin-whitelist": "^1.3.2",
         "ionic-angular": "3.7.1",
         "ionic-plugin-keyboard": "^2.2.1",
         "ionicons": "3.0.0",
+        "ng2-charts": "^1.6.0",
         "rxjs": "5.4.3",
         "sw-toolbox": "3.6.0",
         "zone.js": "0.8.18"
@@ -56,7 +59,8 @@
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
             "cordova-plugin-push-baidu": {},
-            "cordova-hot-code-push-plugin": {}
+            "cordova-hot-code-push-plugin": {},
+            "cordova-plugin-statusbar": {}
         },
         "platforms": [
             "android"
