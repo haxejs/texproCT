@@ -21,6 +21,9 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, toastCtrl: ToastController, translate: TranslateService) {
     LoopBackConfig.setBaseURL(config.cloud.baseUrl);
     LoopBackConfig.setApiVersion('api');
+    if (config.productionMode) {
+      LoopBackConfig.setDebugMode(false);
+    }
 
     translate.setDefaultLang('zh');
     //TODO: use system default language
@@ -30,7 +33,7 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
+      // statusBar.styleDefault();
       splashScreen.hide();
 
       function showToast(msg){
