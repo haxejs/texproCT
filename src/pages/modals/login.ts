@@ -10,16 +10,18 @@ export class LoginPage {
   public email:string = "dtr@ugen.cn";
   public password:string = "123456";
   public texts: any = {};
+  private subscription;
   constructor(
     private viewCtrl: ViewController,
     private dtr: DTRService,
     private toastCtrl: ToastController,
     private translate: TranslateService
   ) {
-    this.translate.get(['LOGIN_FAILED']).subscribe(texts => this.texts = texts);
+    this.subscription = this.translate.stream(['LOGIN_FAILED']).subscribe(texts => this.texts = texts);
   }
 
   dismiss() {
+    this.subscription.unsubscribe();
     this.viewCtrl.dismiss();
   }
 
@@ -31,6 +33,6 @@ export class LoginPage {
         position: 'bottom'
       }).present();
     });
-    this.viewCtrl.dismiss();
+    this.dismiss();
   }
 }

@@ -7,12 +7,20 @@
 <ion-content>
   <ion-card>
     <ion-item-divider>
-      <div>{{"Total Loading" | translate}}: {{loadingTotal}}</div>
-      <div item-end>{{"Total Power" | translate}}: {{powerTotal}}</div>
+      <div>{{"Total Loading" | translate}}</div>
+      <div item-end>{{loadingTotal}}{{texts.kg}}</div>
     </ion-item-divider>
     <ion-item-divider>
-      <div>{{"Total Water" | translate}}: {{waterTotal}}</div>
-      <div item-end>{{"Total Steam" | translate}}: {{steamTotal}}</div>
+      <div>{{"Total Power" | translate}}</div>
+      <div item-end>{{powerTotal}}{{texts.kwh}}</div>
+    </ion-item-divider>
+    <ion-item-divider>
+      <div>{{"Total Water" | translate}}</div>
+      <div item-end>{{waterTotal}}{{texts.ton}}</div>
+    </ion-item-divider>
+    <ion-item-divider>
+      <div>{{"Total Steam" | translate}}</div>
+      <div item-end>{{steamTotal}}{{texts.ton}}</div>
     </ion-item-divider>
   </ion-card>
 

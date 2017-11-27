@@ -65,6 +65,9 @@
 	"Total Water":"Total Water",
 	"Total Steam":"Total Steam",
 	"Total Power":"Total Power",
+	"kg":"kg",
+	"ton":"ton",
+	"kwh":"kwh",
 
 	"Machines":"Machines",
 	"Equipments":"Equipments",

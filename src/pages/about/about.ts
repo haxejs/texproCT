@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavController, ModalController, AlertController } from 'ionic-angular';
 import { LoginPage } from '../modals/login';
 import { DTRService } from '../../app/dtr.service';
@@ -12,12 +12,14 @@ var myPackage = require('../../../package.json');
   selector: 'page-about',
   templateUrl: 'about.html'
 })
-export class AboutPage {
+export class AboutPage implements OnDestroy {
   public language:string;
 
   public version:string;
 
   public texts: any = {};
+
+  private subscription;
 
   constructor(private navCtrl: NavController, 
     private modalCtrl: ModalController, 
@@ -26,8 +28,12 @@ export class AboutPage {
     private translate: TranslateService) {
   	this.language = translate.currentLang;
   	this.version = myPackage.version;
-    this.translate.get(['Sure', 'Cancel', 'LOGOUT_ALERT_TITLE'])
-    .subscribe(texts => this.texts = texts);
+    this.subscription = this.translate.stream(['Sure', 'Cancel', 'LOGOUT_ALERT_TITLE'])
+      .subscribe(texts => this.texts = texts);
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
   public onChange(lang){
