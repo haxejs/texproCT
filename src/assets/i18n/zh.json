@@ -60,11 +60,11 @@
 	"BATCH_NAME":"缸名",
 	"Water":"用水",
 	"Steam":"用气",
-	"Power":"能源",	
+	"Power":"用电",	
 	"Total Loading":"总装载",
 	"Total Water":"总用水",
 	"Total Steam":"总用气",
-	"Total Power":"总能源",
+	"Total Power":"总用电",
 
 	"Machines":"染色机",
 	"Equipments":"实验室设备",

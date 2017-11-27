@@ -66,19 +66,19 @@ export class BatchesPage implements OnDestroy{
 	}
 
 	private getLoadingTotal(){
-	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Loading?batch.Loading:0) },0);
+	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Loading?batch.Loading:0) },0).toFixed(1);
 	}
 
 	private getWaterTotal(){
-	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Water_Vol1_Total?batch.Water_Vol1_Total:0) },0);
+	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Water_Vol1_Total?batch.Water_Vol1_Total:0) },0).toFixed(1);
 	}
 
 	private getSteamTotal(){
-	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Steam_Vol_Total?batch.Steam_Vol_Total:0) },0);
+	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Steam_Vol_Total?batch.Steam_Vol_Total:0) },0).toFixed(1);
 	}
 
 	private getPowerTotal(){
-	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Power_Total?batch.Power_Total:0) },0);
+	    return this.batches.reduce((sum,batch)=>{return sum + Number(batch.Power_Total?batch.Power_Total:0) },0).toFixed(1);
 	}
 
 	public lineChartOptions:any = {
