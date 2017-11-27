@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { DTRService } from '../../app/dtr.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -23,16 +24,18 @@ export class BatchesPage implements OnDestroy{
 
 	public batches: Array<any> = [];
 
+	public texts: any = {};
+
 	private getLineChartData() {
 		let loadingArr = this.batches.map((batch)=>{return batch.Loading?Number(batch.Loading):0});
 		let waterArr = this.batches.map((batch)=>{return batch.Water_Vol1_Total?Number(batch.Water_Vol1_Total):0});
 		let steamArr = this.batches.map((batch)=>{return batch.Steam_Vol_Total?Number(batch.Steam_Vol_Total):0});
 		let powerArr = this.batches.map((batch)=>{return batch.Power_Total?Number(batch.Power_Total):0});
 		return [
-			{data: loadingArr, label: 'Loading'},
-			{data: waterArr, label: 'Water'},
-			{data: steamArr, label: 'Steam'},
-			{data: powerArr, label: 'Power'}
+			{data: loadingArr, label: this.texts.Loading + '(' + this.texts.kg + ')'},
+			{data: waterArr, label: this.texts.Water + '(' + this.texts.ton + ')'},
+			{data: steamArr, label: this.texts.Steam + '(' + this.texts.ton + ')'},
+			{data: powerArr, label: this.texts.Power + '(' + this.texts.kwh + ')'}
 		];
 	} 
 
@@ -122,14 +125,21 @@ export class BatchesPage implements OnDestroy{
 	public lineChartType:string = 'horizontalBar';
 
 	private timeoutHandle;
+	private subscription;
 	private state:string;
 
-	constructor(public navCtrl: NavController, private dtr: DTRService, private navParams: NavParams) {
+	constructor(public navCtrl: NavController, private dtr: DTRService, private navParams: NavParams, private translate: TranslateService) {
 		this.state = navParams.data.state;		
+		this.subscription = this.translate.stream(['Loading', 'Water', 'Steam', 'Power', 'kg', 'ton', 'kwh'])
+		    .subscribe(texts => {
+		    	this.texts = texts;
+		    });
+
 		this.update();
 	}
 
 	ngOnDestroy(){
 		if (this.timeoutHandle) clearTimeout(this.timeoutHandle);
+		this.subscription.unsubscribe();
 	}
 }
