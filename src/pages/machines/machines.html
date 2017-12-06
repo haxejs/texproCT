@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-card *ngFor="let machine of machines();">
+    <ion-card *ngFor="let machine of machines;">
       <ion-item detail-push (click)="showMachine(machine.id)">
         <div padding item-start>        
           <h1>{{machine.MachineNumber}}</h1>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { MachinesPage } from '../machines/machines';
 import { BatchesPage } from '../batches/batches';
@@ -12,15 +12,22 @@ import { Batch, Machine } from '../../app/shared/sdk/models';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnDestroy {
   public machines:Array<Machine> = new Array<Machine>();
   public batches:Array<Batch> = new Array<Batch>();
+  private machinesSubscription;
+  private batchesSubscription;
 
   constructor(private navCtrl: NavController, 
     private modalCtrl: ModalController, 
     private dtr: DTRService) {
-      this.machines = dtr.machines;
-      this.batches = dtr.batches;
+      this.machinesSubscription = dtr.machinesObservable.subscribe(machines => this.machines = machines);
+      this.batchesSubscription = dtr.batchesObservable.subscribe(batches => this.batches = batches);
+  }
+
+  ngOnDestroy(){
+    this.machinesSubscription.unsubscribe();
+    this.batchesSubscription.unsubscribe();
   }
 
   public runningMachines(){

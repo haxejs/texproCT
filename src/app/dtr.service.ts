@@ -1,53 +1,38 @@
 import { Injectable, Inject } from '@angular/core';
-import { FireLoopRef, Customer, Batch, Company, Machine } from './shared/sdk/models';
-import { RealTime, CustomerApi } from './shared/sdk/services';
+import { Customer, Batch, Company, Machine } from './shared/sdk/models';
+import { CompanyApi, CustomerApi } from './shared/sdk/services';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class DTRService {
-  private MachineReference: FireLoopRef<Machine>;
-  private BatchReference: FireLoopRef<Batch>;
-  private isLoginning: boolean = false;
+  private machinesSubject:BehaviorSubject<Machine[]> = new BehaviorSubject<Machine[]>([]);
+  private batchesSubject:BehaviorSubject<Batch[]> = new BehaviorSubject<Batch[]>([]);
+  public machinesObservable:Observable<Machine[]> = this.machinesSubject.asObservable();
+  public batchesObservable:Observable<Batch[]> = this.batchesSubject.asObservable();
 
-  public machines:Array<Machine> = new Array<Machine>();
-  public batches:Array<Batch> = new Array<Batch>();
+  private isLoginning: boolean = false;
+  private timeoutHandle: any = null;
+  private company:Company = null;
+  private users:Customer[] = [];
 
   constructor(
     @Inject(CustomerApi) private customerApi: CustomerApi,
-    @Inject(RealTime) private realtime: RealTime
+    @Inject(CompanyApi) private companyApi: CompanyApi
   ) {
   	if (this.customerApi.isAuthenticated()) {
       this.isLoginning = true;
-  		this.flashData();
+  		this.retrieveCompany();
   	} else {
       this.isLoginning = false;
     }
   }
 
-  private flashData(){
-  	if (this.MachineReference) this.MachineReference.dispose();
-  	if (this.BatchReference) this.BatchReference.dispose();
-    this.MachineReference = null;
-    this.BatchReference = null;
-
+  private retrieveCompany(){
     this.customerApi.getCompany(this.customerApi.getCurrentId()).subscribe((company:Company) => {
-      this.realtime.onReady().subscribe(() => {
-        this.realtime.onAuthenticated().subscribe(() => {
-          //this.MachineReference = this.realtime.FireLoop.ref<Company>(Company).make(company).child<Machine>('machines');
-          //this.BatchReference = this.realtime.FireLoop.ref<Company>(Company).make(company).child<Batch>('batches');
-
-          this.MachineReference = this.realtime.FireLoop.ref<Machine>(Machine);
-          this.BatchReference = this.realtime.FireLoop.ref<Batch>(Batch);
-
-          this.MachineReference.on('change',{limit:1000,order:'id DESC',where:{companyId:company.id}}).subscribe((machines:Array<Machine>)=>{
-            this.machines.splice(0,this.machines.length,...machines);
-            
-          });
-          this.BatchReference.on('change',{limit:1000,order:'id DESC',where:{companyId:company.id}}).subscribe((batches:Array<Batch>)=>{
-            this.batches.splice(0,this.batches.length,...batches);
-          }); 
-        });
-      });
+      this.company = company;
+      this.companyApi.getUsers(this.company.id).forEach(users => this.users = users);
+      this.flashData();
     },err => {
     	console.dir(err);
       this.isLoginning = false;
@@ -56,13 +41,28 @@ export class DTRService {
     });
   }
 
+  private flashData(){
+    let func = async () => {
+      try{
+        if (this.company){
+          await this.companyApi.getMachines(this.company.id).forEach(machines => this.machinesSubject.next(machines));
+          await this.companyApi.getBatches(this.company.id).forEach(batches => this.batchesSubject.next(batches));
+        }
+      }catch(err){
+        console.dir(err);
+      }
+      
+      if (this.isLoginning) {
+        this.timeoutHandle = setTimeout(()=>{this.flashData()},5000);
+      }
+    };
+    func();
+  }
+
   public login(credentials: any, errCallback:Function){
   	this.customerApi.login(credentials).subscribe(()=>{
-      this.machines.splice(0,this.machines.length);
-      this.batches.splice(0,this.batches.length);
-  		//if (this.realtime.connection) this.realtime.connection.disconnect();
       this.isLoginning = true;
-  		this.flashData();
+  		this.retrieveCompany();
   	}, (err) => {if (errCallback) errCallback(err)});
   }
 
@@ -70,20 +70,29 @@ export class DTRService {
     return this.isLoginning;
   }
 
+  public getUsers(){
+    return this.users;
+  }
+
+  public getCompany(){
+    return this.company;
+  }
+
   public getCachedCurrent(){
     return this.customerApi.getCachedCurrent()?this.customerApi.getCachedCurrent():{};
   }
 
   public logout(){
-  	this.customerApi.logout().subscribe(()=>{
-  		if (this.realtime.connection) this.realtime.connection.disconnect();
-      if (this.MachineReference) this.MachineReference.dispose();
-      if (this.BatchReference) this.BatchReference.dispose();
-      this.MachineReference = null;
-      this.BatchReference = null;
-      this.machines.splice(0,this.machines.length);
-      this.batches.splice(0,this.batches.length);
-      this.isLoginning = false;
-  	});
+    this.isLoginning = false;
+    if (this.timeoutHandle){
+      clearTimeout(this.timeoutHandle);
+      this.timeoutHandle = null;
+    }
+    this.users = [];
+
+    this.machinesSubject.next([]);
+    this.batchesSubject.next([]);
+
+  	this.customerApi.logout().subscribe();
   }
 }

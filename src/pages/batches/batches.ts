@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { DTRService } from '../../app/dtr.service';
 import { TranslateService } from '@ngx-translate/core';
-
+import { Batch } from '../../app/shared/sdk/models';
 
 
 @Component({
@@ -44,7 +44,6 @@ export class BatchesPage implements OnDestroy{
 	} 
 
 	private update(){
-		this.batches = this.getBatches();
 		this.loadingTotal = this.getLoadingTotal();
 		this.waterTotal = this.getWaterTotal();
 		this.steamTotal = this.getSteamTotal();
@@ -56,15 +55,13 @@ export class BatchesPage implements OnDestroy{
 		if (__lineChartLabels.toString() != this.lineChartLabels.toString()){
 			setTimeout(()=>{this.lineChartLabels = __lineChartLabels},0);
 		}
-		
-		this.timeoutHandle = setTimeout(()=>{this.update()},5000);
 	}
 
-	private getBatches(){
+	private filterBatches(oldBatches:Batch[]){
 		if (this.state == "completed"){
-			return this.dtr.batches.filter(batch => {return batch.completed == 1});
+			return oldBatches.filter(batch => {return batch.completed == 1});
 		} else {
-			return this.dtr.batches.filter(batch => {return batch.completed == 0});
+			return oldBatches.filter(batch => {return batch.completed == 0});
 		}		
 	}
 
@@ -124,12 +121,16 @@ export class BatchesPage implements OnDestroy{
 	public lineChartLegend:boolean = true;
 	public lineChartType:string = 'horizontalBar';
 
-	private timeoutHandle;
 	private subscription;
 	private state:string;
+	private batchesSubscription;
 
 	constructor(public navCtrl: NavController, private dtr: DTRService, private navParams: NavParams, private translate: TranslateService) {
-		this.state = navParams.data.state;		
+		this.state = navParams.data.state;	
+		this.batchesSubscription = dtr.batchesObservable.subscribe(batches => {
+			this.batches = this.filterBatches(batches);
+			this.update();
+		});	
 		this.subscription = this.translate.stream(['Loading', 'Water', 'Steam', 'Power', 'kg', 'ton', 'kwh'])
 		    .subscribe(texts => {
 		    	this.texts = texts;
@@ -139,7 +140,7 @@ export class BatchesPage implements OnDestroy{
 	}
 
 	ngOnDestroy(){
-		if (this.timeoutHandle) clearTimeout(this.timeoutHandle);
+		this.batchesSubscription.unsubscribe();
 		this.subscription.unsubscribe();
 	}
 }

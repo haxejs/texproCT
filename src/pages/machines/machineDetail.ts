@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { DTRService } from '../../app/dtr.service';
-//import { Machine } from '../../app/shared/sdk/models';
+import { Machine } from '../../app/shared/sdk/models';
 
 
 @Component({
@@ -65,24 +65,21 @@ export class MachineDetailPage implements OnDestroy{
 	public lineChartLegend:boolean = false;
 	public lineChartType:string = 'line';
 
-	private timeoutHandle;
+	private machinesSubscription;
 
-	constructor(private navCtrl: NavController, private navParams: NavParams, private dtr: DTRService) {
-	  	this.update();  	
+	constructor(navParams: NavParams, dtr: DTRService) {	    
+		  this.machinesSubscription = dtr.machinesObservable.subscribe(machines => {
+			let __machine = machines.find( (machine) => { return machine.id == navParams.data.machineId});
+			this.machine = __machine?__machine:{tempArray:[]};
+			this.lineChartData = this.getLineChartData();
+		  });	
 	}
 
 	ngOnDestroy(){
-		if (this.timeoutHandle) clearTimeout(this.timeoutHandle);
+		this.machinesSubscription.unsubscribe();
 	}
 
 	private getLineChartData(){
 		return [{data: this.machine.tempArray, label: 'Temperature'}];
-	}
-
-	private update(){
-		let __machine = this.dtr.machines.find( (machine) => { return machine.id == this.navParams.data.machineId});
-		this.machine = __machine?__machine:{tempArray:[]};
-		this.lineChartData = this.getLineChartData();
-		this.timeoutHandle = setTimeout(()=>{this.update()},5000);
 	}
 }
