@@ -37,34 +37,29 @@ export class MyApp {
       // statusBar.styleDefault();
       splashScreen.hide();
 
-      function showToast(msg){
-        // toastCtrl.create({
-        //   message: JSON.stringify(msg),
-        //   duration: 3000,
-        //   position: 'top'
-        // }).present();
+      function log(msg){
         console.log(JSON.stringify(msg));
       }
 
-      document.addEventListener('chcp_updateIsReadyToInstall', eventData => showToast(Object.assign({event:'chcp_updateIsReadyToInstall'},eventData)), false);
-      document.addEventListener('chcp_updateLoadFailed', eventData => showToast(Object.assign({event:'chcp_updateLoadFailed'},eventData)), false);
-      document.addEventListener('chcp_nothingToUpdate', eventData => showToast(Object.assign({event:'chcp_nothingToUpdate'},eventData)), false);
-      document.addEventListener('chcp_beforeInstall', eventData => showToast(Object.assign({event:'chcp_beforeInstall'},eventData)), false);
-      document.addEventListener('chcp_updateInstalled', eventData => showToast(Object.assign({event:'chcp_updateInstalled'},eventData)), false);
-      document.addEventListener('chcp_updateInstallFailed', eventData => showToast(Object.assign({event:'chcp_updateInstallFailed'},eventData)), false);
-      document.addEventListener('chcp_nothingToInstall', eventData => showToast(Object.assign({event:'chcp_nothingToInstall'},eventData)), false);
-      document.addEventListener('chcp_beforeAssetsInstalledOnExternalStorage', eventData => showToast(Object.assign({event:'chcp_beforeAssetsInstalledOnExternalStorage'},eventData)), false);
-      document.addEventListener('chcp_assetsInstalledOnExternalStorage', eventData => showToast(Object.assign({event:'chcp_assetsInstalledOnExternalStorage'},eventData)), false);
-      document.addEventListener('chcp_assetsInstallationError', eventData => showToast(Object.assign({event:'chcp_assetsInstallationError'},eventData)), false);
+      document.addEventListener('chcp_updateIsReadyToInstall', eventData => log(Object.assign({event:'chcp_updateIsReadyToInstall'},eventData)), false);
+      document.addEventListener('chcp_updateLoadFailed', eventData => log(Object.assign({event:'chcp_updateLoadFailed'},eventData)), false);
+      document.addEventListener('chcp_nothingToUpdate', eventData => log(Object.assign({event:'chcp_nothingToUpdate'},eventData)), false);
+      document.addEventListener('chcp_beforeInstall', eventData => log(Object.assign({event:'chcp_beforeInstall'},eventData)), false);
+      document.addEventListener('chcp_updateInstalled', eventData => log(Object.assign({event:'chcp_updateInstalled'},eventData)), false);
+      document.addEventListener('chcp_updateInstallFailed', eventData => log(Object.assign({event:'chcp_updateInstallFailed'},eventData)), false);
+      document.addEventListener('chcp_nothingToInstall', eventData => log(Object.assign({event:'chcp_nothingToInstall'},eventData)), false);
+      document.addEventListener('chcp_beforeAssetsInstalledOnExternalStorage', eventData => log(Object.assign({event:'chcp_beforeAssetsInstalledOnExternalStorage'},eventData)), false);
+      document.addEventListener('chcp_assetsInstalledOnExternalStorage', eventData => log(Object.assign({event:'chcp_assetsInstalledOnExternalStorage'},eventData)), false);
+      document.addEventListener('chcp_assetsInstallationError', eventData => log(Object.assign({event:'chcp_assetsInstallationError'},eventData)), false);
      
       if (window.baiduPush) {
-        window.baiduPush.onMessage(result => showToast({msg:result}), error => showToast(error));
+        window.baiduPush.onMessage(result => log(result), error => log(error));
 
-        window.baiduPush.onNotificationClicked(result => showToast(result), error => showToast(error));
+        window.baiduPush.onNotificationClicked(result => log(result), error => log(error));
 
-        window.baiduPush.onNotificationArrived(result => showToast(result), error => showToast(error));
+        window.baiduPush.onNotificationArrived(result => log(result), error => log(error));
 
-        window.baiduPush.startWork(config.baiduPush.api_key, result => {}, error => showToast(error));
+        window.baiduPush.startWork(config.baiduPush.api_key, result => log(result));
       }      
 
     });

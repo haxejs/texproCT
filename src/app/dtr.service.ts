@@ -4,6 +4,8 @@ import { CompanyApi, CustomerApi } from './shared/sdk/services';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
+declare var window: any;
+
 @Injectable()
 export class DTRService {
   private machinesSubject:BehaviorSubject<Machine[]> = new BehaviorSubject<Machine[]>([]);
@@ -15,6 +17,7 @@ export class DTRService {
   private timeoutHandle: any = null;
   private company:Company = null;
   private users:Customer[] = [];
+  private _isPushEnabled:boolean = true;
 
   constructor(
     @Inject(CustomerApi) private customerApi: CustomerApi,
@@ -31,6 +34,11 @@ export class DTRService {
   private retrieveCompany(){
     this.customerApi.getCompany(this.customerApi.getCurrentId()).subscribe((company:Company) => {
       this.company = company;
+      if (this._isPushEnabled){
+        window.baiduPush.setTags(['' + this.company.id]);
+      } else {
+        window.baiduPush.delTags(['' + this.company.id]);
+      }
       this.companyApi.getUsers(this.company.id).forEach(users => this.users = users);
       this.flashData();
     },err => {
@@ -80,6 +88,24 @@ export class DTRService {
 
   public getCachedCurrent(){
     return this.customerApi.getCachedCurrent()?this.customerApi.getCachedCurrent():{};
+  }
+
+  public stopPush(){
+    this._isPushEnabled = false;
+    if (this.company){
+      window.baiduPush.delTags(['' + this.company.id]);
+    }
+  }
+
+  public resumePush(){
+    this._isPushEnabled = true;
+    if (this.company){
+      window.baiduPush.setTags(['' + this.company.id]);
+    }
+  }
+
+  public isPushEnabled():boolean{
+    return this._isPushEnabled;
   }
 
   public logout(){
