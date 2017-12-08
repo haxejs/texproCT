@@ -13,16 +13,32 @@ import { Batch, Machine } from '../../app/shared/sdk/models';
   templateUrl: 'home.html'
 })
 export class HomePage implements OnDestroy {
-  public machines:Array<Machine> = new Array<Machine>();
-  public batches:Array<Batch> = new Array<Batch>();
+  private machines:Array<Machine> = new Array<Machine>();
+  private batches:Array<Batch> = new Array<Batch>();
   private machinesSubscription;
   private batchesSubscription;
+  public runningMachines:Array<Machine> = new Array<Machine>();
+  public warningMachines:Array<Machine> = new Array<Machine>();
+  public stoppedMachines:Array<Machine> = new Array<Machine>();
+  public offlineMachines:Array<Machine> = new Array<Machine>();
+  public completedBatches:Array<Batch> = new Array<Batch>();
+  public uncompletedBatches:Array<Batch> = new Array<Batch>();
+  public completedLoading:number = 0;
+  public uncompletedLoading:number = 0;
+  
+
 
   constructor(private navCtrl: NavController, 
     private modalCtrl: ModalController, 
     private dtr: DTRService) {
-      this.machinesSubscription = dtr.machinesObservable.subscribe(machines => this.machines = machines);
-      this.batchesSubscription = dtr.batchesObservable.subscribe(batches => this.batches = batches);
+      this.machinesSubscription = dtr.machinesObservable.subscribe(machines => {
+        this.machines = machines;
+        this.machinesUpdate();
+      });
+      this.batchesSubscription = dtr.batchesObservable.subscribe(batches => {
+        this.batches = batches;
+        this.batchesUpdate();
+      });
   }
 
   ngOnDestroy(){
@@ -30,36 +46,50 @@ export class HomePage implements OnDestroy {
     this.batchesSubscription.unsubscribe();
   }
 
-  public runningMachines(){
+  private machinesUpdate(){
+    this.runningMachines = this.calRunningMachines();
+    this.warningMachines = this.calWarningMachines();
+    this.stoppedMachines = this.calStoppedMachines();
+    this.offlineMachines = this.calOfflineMachines();
+  }
+
+  private batchesUpdate(){
+    this.completedBatches = this.calCompletedBatches();
+    this.uncompletedBatches = this.calUncompletedBatches();
+    this.completedLoading = this.calCompletedLoading();
+    this.uncompletedLoading = this.calUncompletedLoading();
+  }
+
+  private calRunningMachines(){
     return this.machines.filter(machine => {return machine.OnLine == 1 && machine.MachineState == '1'});
   }
 
-  public warningMachines(){
+  private calWarningMachines(){
     return this.machines.filter(machine => {return machine.OnLine == 1 && machine.Main_Alarm > 0});
   }
 
-  public stoppedMachines(){
+  private calStoppedMachines(){
     return this.machines.filter(machine => {return machine.OnLine == 1 && machine.MachineState == '0'});
   }
 
-  public offlineMachines(){
+  private calOfflineMachines(){
     return this.machines.filter(machine => {return machine.OnLine == 0});
   }
 
-  public completedBatches(){
+  private calCompletedBatches(){
     return this.batches.filter(batch => {return batch.completed == 1});
   }
 
-  public uncompletedBatches(){
+  private calUncompletedBatches(){
     return this.batches.filter(batch => {return batch.completed == 0});
   }
 
-  public completedLoading(){
-    return this.completedBatches().reduce((sum,batch)=>{return sum + batch.Loading },0);
+  private calCompletedLoading(){
+    return this.completedBatches.reduce((sum,batch)=>{return sum + batch.Loading },0);
   }
 
-  public uncompletedLoading(){
-    return this.uncompletedBatches().reduce((sum,batch)=>{return sum + batch.Loading },0);
+  private calUncompletedLoading(){
+    return this.uncompletedBatches.reduce((sum,batch)=>{return sum + batch.Loading },0);
   }
 
   public showMachines(state) {

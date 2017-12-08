@@ -10,22 +10,22 @@
       <div padding-horizontal class="item secondaryTextColor" tappable (click)="showMachines('running')">
         <ion-icon name="pulse"></ion-icon>
         <div class="truncate">{{"running"|translate}}</div>
-        <div>{{ runningMachines().length }}</div>
+        <div>{{ runningMachines.length }}</div>
       </div>
       <div padding-horizontal class="item dangerTextColor" tappable (click)="showMachines('warning')">
         <ion-icon name="warning"></ion-icon>
         <div class="truncate">{{"warning"|translate}}</div>
-        <div>{{ warningMachines().length }}</div>
+        <div>{{ warningMachines.length }}</div>
       </div>
       <div padding-horizontal class="item" tappable (click)="showMachines('stopped')">
         <ion-icon name="square"></ion-icon>
         <div class="truncate">{{"stopped"|translate}}</div>
-        <div>{{ stoppedMachines().length }}</div>
+        <div>{{ stoppedMachines.length }}</div>
       </div>
       <div padding-horizontal class="item lightTextColor" tappable (click)="showMachines('offline')">
         <ion-icon name="switch"></ion-icon>
         <div class="truncate">{{"offline"|translate}}</div>
-        <div>{{ offlineMachines().length }}</div>
+        <div>{{ offlineMachines.length }}</div>
       </div>      
     </ion-card-content>
   </ion-card>
@@ -38,15 +38,15 @@
       <div id="completedBatches" padding-horizontal class="itemWide" tappable (click)="showBatches('completed')">
         <div class="contrastBackgroundColor">
           <div class="truncate">{{"completed"|translate}}</div>
-          <div>{{"Batches"|translate}}: {{ completedBatches().length }}</div>
-          <div>{{"Loading"|translate}}: {{ completedLoading() }}</div>
+          <div>{{"Batches"|translate}}: {{ completedBatches.length }}</div>
+          <div>{{"Loading"|translate}}: {{ completedLoading }}</div>
         </div>        
       </div>
       <div id="producingBatches" padding-horizontal class="itemWide" tappable (click)="showBatches('uncompleted')">
         <div class="contrastBackgroundColor">
           <div class="truncate">{{"uncompleted"|translate}}</div>
-          <div>{{"Batches"|translate}}: {{ uncompletedBatches().length }}</div>
-          <div>{{"Loading"|translate}}: {{ uncompletedLoading() }}</div>
+          <div>{{"Batches"|translate}}: {{ uncompletedBatches.length }}</div>
+          <div>{{"Loading"|translate}}: {{ uncompletedLoading }}</div>
         </div>
       </div>
     </ion-card-content>

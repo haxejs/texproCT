@@ -10,7 +10,7 @@ import { Machine } from '../../app/shared/sdk/models';
     templateUrl: 'machines.html'
 })
 export class MachinesPage implements OnDestroy{
-	private state : string;//running,stopped,warning,offline
+	public state : string;//running,stopped,warning,offline
 	private machinesSubscription;
 	public machines:Array<Machine> = new Array<Machine>();
 
