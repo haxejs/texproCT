@@ -1,6 +1,7 @@
 /* tslint:disable */
 import { Injectable } from '@angular/core';
 import { Customer } from '../../models/Customer';
+import { AgendaJobs } from '../../models/AgendaJobs';
 import { Company } from '../../models/Company';
 import { Machine } from '../../models/Machine';
 import { Batch } from '../../models/Batch';
@@ -13,6 +14,7 @@ export class SDKModels {
 
   private models: Models = {
     Customer: Customer,
+    AgendaJobs: AgendaJobs,
     Company: Company,
     Machine: Machine,
     Batch: Batch,

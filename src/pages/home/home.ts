@@ -2,7 +2,8 @@ import { Component, OnDestroy } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { MachinesPage } from '../machines/machines';
 import { BatchesPage } from '../batches/batches';
-import { RequestPage } from '../modals/request';
+//import { RequestPage } from '../modals/request';
+import { ContactPage } from '../contact/contact';
 import { LoginPage } from '../modals/login';
 
 import { DTRService } from '../../app/dtr.service';
@@ -61,15 +62,15 @@ export class HomePage implements OnDestroy {
   }
 
   private calRunningMachines(){
-    return this.machines.filter(machine => {return machine.OnLine == 1 && machine.MachineState == '1'});
+    return this.machines.filter(machine => {return machine.OnLine == 1 && machine.MachineStateInt == 1});
   }
 
   private calWarningMachines(){
-    return this.machines.filter(machine => {return machine.OnLine == 1 && machine.Main_Alarm > 0});
+    return this.machines.filter(machine => {return machine.OnLine == 1 && machine.Main_AlarmInt > 0});
   }
 
   private calStoppedMachines(){
-    return this.machines.filter(machine => {return machine.OnLine == 1 && machine.MachineState == '0'});
+    return this.machines.filter(machine => {return machine.OnLine == 1 && machine.MachineStateInt == 0});
   }
 
   private calOfflineMachines(){
@@ -110,8 +111,9 @@ export class HomePage implements OnDestroy {
 
   public requestRepair() {
     if (this.dtr.isAuthenticated()){
-      let myModal = this.modalCtrl.create(RequestPage);
-      myModal.present();
+      // let myModal = this.modalCtrl.create(RequestPage);
+      // myModal.present();
+      this.navCtrl.push(ContactPage);
     } else {
       this.login();
     }    

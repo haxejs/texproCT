@@ -8,7 +8,7 @@ export interface BatchInterface {
   "dtrSenderName"?: string;
   "BatchName": string;
   "MachineNumber": number;
-  "MachineName": string;
+  "MachineName"?: string;
   "Loading"?: number;
   "Water_Vol1_Total"?: string;
   "Water_Vol2_Total"?: string;

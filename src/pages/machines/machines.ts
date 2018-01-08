@@ -25,11 +25,11 @@ export class MachinesPage implements OnDestroy{
 
 	private filterMachines(oldMachines:Machine[]){
 		if (this.state == 'stopped'){
-			return oldMachines.filter(machine => {return machine.OnLine == 1 && machine.MachineState == '0'});	
+			return oldMachines.filter(machine => {return machine.OnLine == 1 && machine.MachineStateInt == 0});	
 		}else if (this.state == 'running'){
-			return oldMachines.filter(machine => {return machine.OnLine == 1 && machine.MachineState == '1'});
+			return oldMachines.filter(machine => {return machine.OnLine == 1 && machine.MachineStateInt == 1});
 		}else if (this.state == 'warning'){
-			return oldMachines.filter(machine => {return machine.OnLine == 1 && machine.Main_Alarm > 0});
+			return oldMachines.filter(machine => {return machine.OnLine == 1 && machine.Main_AlarmInt > 0});
 		}else {
 			return oldMachines.filter(machine => {return machine.OnLine == 0});
 		}		

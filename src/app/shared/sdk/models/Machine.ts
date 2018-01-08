@@ -7,12 +7,15 @@ export interface MachineInterface {
   "dtrSenderName"?: string;
   "tempArray"?: Array<any>;
   "MachineNumber": number;
-  "OnLine": number;
-  "MachineName": string;
+  "OnLine"?: number;
+  "MachineName"?: string;
   "MachineState"?: string;
+  "MachineStateInt"?: number;
   "MachineMode"?: string;
+  "MachineModeInt"?: number;
   "MachineCallState"?: string;
   "BatchName"?: string;
+  "BatchStateInt"?: number;
   "DyeProgName"?: string;
   "Sub_DyeProgName"?: string;
   "DyeProgNumber"?: number;
@@ -20,7 +23,8 @@ export interface MachineInterface {
   "Main_Vol"?: number;
   "TankB_Vol"?: number;
   "TankC_Vol"?: number;
-  "Main_Alarm"?: number;
+  "Main_AlarmInt"?: number;
+  "Main_Alarm"?: string;
   "Loading"?: number;
   "Ratio_1"?: string;
   "Ratio_2"?: string;
@@ -96,9 +100,12 @@ export class Machine implements MachineInterface {
   "OnLine": number = 0;
   "MachineName": string = '';
   "MachineState": string = '';
+  "MachineStateInt": number = 0;
   "MachineMode": string = '';
+  "MachineModeInt": number = 0;
   "MachineCallState": string = '';
   "BatchName": string = '';
+  "BatchStateInt": number = 0;
   "DyeProgName": string = '';
   "Sub_DyeProgName": string = '';
   "DyeProgNumber": number = 0;
@@ -106,7 +113,8 @@ export class Machine implements MachineInterface {
   "Main_Vol": number = 0;
   "TankB_Vol": number = 0;
   "TankC_Vol": number = 0;
-  "Main_Alarm": number = 0;
+  "Main_AlarmInt": number = 0;
+  "Main_Alarm": string = '';
   "Loading": number = 0;
   "Ratio_1": string = '';
   "Ratio_2": string = '';
@@ -236,9 +244,17 @@ export class Machine implements MachineInterface {
           name: 'MachineState',
           type: 'string'
         },
+        "MachineStateInt": {
+          name: 'MachineStateInt',
+          type: 'number'
+        },
         "MachineMode": {
           name: 'MachineMode',
           type: 'string'
+        },
+        "MachineModeInt": {
+          name: 'MachineModeInt',
+          type: 'number'
         },
         "MachineCallState": {
           name: 'MachineCallState',
@@ -247,6 +263,10 @@ export class Machine implements MachineInterface {
         "BatchName": {
           name: 'BatchName',
           type: 'string'
+        },
+        "BatchStateInt": {
+          name: 'BatchStateInt',
+          type: 'number'
         },
         "DyeProgName": {
           name: 'DyeProgName',
@@ -276,9 +296,13 @@ export class Machine implements MachineInterface {
           name: 'TankC_Vol',
           type: 'number'
         },
+        "Main_AlarmInt": {
+          name: 'Main_AlarmInt',
+          type: 'number'
+        },
         "Main_Alarm": {
           name: 'Main_Alarm',
-          type: 'number'
+          type: 'string'
         },
         "Loading": {
           name: 'Loading',

@@ -12,9 +12,9 @@
           <h1>{{machine.MachineNumber}}</h1>
         </div>
         <h2>{{machine.MachineName}} <span *ngIf="machine.BatchName">({{machine.BatchName}})</span></h2>
-        <h3 *ngIf="machine.OnLine != 0">{{("MachineState" + machine.MachineState) | translate}}, {{machine.MachineMainTemp}}°C, {{machine.DyeProgNumber}}, {{machine.DyeProgStep}}</h3>
+        <h3 *ngIf="machine.OnLine != 0">{{machine.MachineState}}, {{machine.MachineMainTemp}}°C, {{machine.DyeProgNumber}}, {{machine.DyeProgStep}}</h3>
         <h3 *ngIf="machine.OnLine == 0">{{("OnLine" + machine.OnLine) | translate}}</h3>
-        <p *ngIf="machine.Main_Alarm > 0" style="color:red;">{{("Main_Alarm" + machine.Main_Alarm) | translate}}</p>      
+        <p *ngIf="machine.Main_AlarmInt > 0" style="color:red;">{{ machine.Main_Alarm }}</p>      
       </ion-item>
     </ion-card>
   </ion-list>

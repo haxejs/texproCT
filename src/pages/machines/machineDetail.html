@@ -36,7 +36,7 @@
       {{"MACHINE_ALARM" | translate}}
     </ion-item-divider>
     <ion-card-content>
-      <p style="color:red;">{{("Main_Alarm" + machine.Main_Alarm) | translate}}</p>
+      <p style="color:red;">{{machine.Main_Alarm}}</p>
     </ion-card-content>
   </ion-card>
 
@@ -46,15 +46,15 @@
     </ion-item-divider>
     <ion-item>
         <ion-label>{{"MACHINE_CALLSTATE" | translate}}</ion-label>
-        <div item-end>{{("MachineCallState" + machine.MachineCallState) | translate}}</div>
+        <div item-end>{{machine.MachineCallState}}</div>
     </ion-item>
     <ion-item>
         <ion-label>{{"MACHINE_MODE" | translate}}</ion-label>
-        <div item-end>{{("MachineMode" + machine.MachineMode) | translate}}</div>
+        <div item-end>{{machine.MachineMode}}</div>
     </ion-item>
     <ion-item>
         <ion-label>{{"MACHINE_STATE" | translate}}</ion-label>
-        <div item-end>{{("MachineState" + machine.MachineState) | translate}}</div>
+        <div item-end>{{machine.MachineState}}</div>
     </ion-item>
     <ion-item>
         <ion-label>{{"DyeProgName" | translate}}</ion-label>

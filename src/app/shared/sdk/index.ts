@@ -50,6 +50,7 @@ import { SocketDriver } from './sockets/socket.driver';
 import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
 import { CustomerApi } from './services/custom/Customer';
+import { AgendaJobsApi } from './services/custom/AgendaJobs';
 import { CompanyApi } from './services/custom/Company';
 import { MachineApi } from './services/custom/Machine';
 import { BatchApi } from './services/custom/Batch';
@@ -86,6 +87,7 @@ export class SDKBrowserModule {
         SDKModels,
         RealTime,
         CustomerApi,
+        AgendaJobsApi,
         CompanyApi,
         MachineApi,
         BatchApi,

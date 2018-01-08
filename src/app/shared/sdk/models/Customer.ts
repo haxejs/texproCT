@@ -7,7 +7,7 @@ declare var Object: any;
 export interface CustomerInterface {
   "fullName"?: string;
   "roleName": string;
-  "lastHeartBeat"?: Date;
+  "deadChecks"?: number;
   "realm"?: string;
   "username"?: string;
   "email": string;
@@ -22,7 +22,7 @@ export interface CustomerInterface {
 export class Customer implements CustomerInterface {
   "fullName": string = '';
   "roleName": string = '';
-  "lastHeartBeat": Date = new Date(0);
+  "deadChecks": number = 0;
   "realm": string = '';
   "username": string = '';
   "email": string = '';
@@ -73,9 +73,10 @@ export class Customer implements CustomerInterface {
           name: 'roleName',
           type: 'string'
         },
-        "lastHeartBeat": {
-          name: 'lastHeartBeat',
-          type: 'Date'
+        "deadChecks": {
+          name: 'deadChecks',
+          type: 'number',
+          default: 0
         },
         "realm": {
           name: 'realm',
