@@ -35,9 +35,9 @@ export class DTRService {
     this.customerApi.getCompany(this.customerApi.getCurrentId()).subscribe((company:Company) => {
       this.company = company;
       if (this._isPushEnabled){
-        window.baiduPush.setTags(['' + this.company.id]);
+        if (window.baiduPush) window.baiduPush.setTags(['' + this.company.id]);
       } else {
-        window.baiduPush.delTags(['' + this.company.id]);
+        if (window.baiduPush) window.baiduPush.delTags(['' + this.company.id]);
       }
       this.companyApi.getUsers(this.company.id).forEach(users => this.users = users);
       this.flashData();
@@ -92,14 +92,14 @@ export class DTRService {
 
   public stopPush(){
     this._isPushEnabled = false;
-    if (this.company){
+    if (this.company && window.baiduPush){
       window.baiduPush.delTags(['' + this.company.id]);
     }
   }
 
   public resumePush(){
     this._isPushEnabled = true;
-    if (this.company){
+    if (this.company && window.baiduPush){
       window.baiduPush.setTags(['' + this.company.id]);
     }
   }
